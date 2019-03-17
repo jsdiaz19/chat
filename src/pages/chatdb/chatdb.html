@@ -1,0 +1,53 @@
+<ion-header color=primary>
+  <ion-navbar color=primary>
+    <ion-title>
+      Fulanito De Cual
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item no-lines>
+      <div class="chat-message" text-right >
+        <div class="right-bubble">
+          <p text-wrap>Hola como estas?</p>
+        </div>
+      </div>
+      <div class="chat-message" text-left >
+        <div class="left-bubble">
+          <p text-wrap>Hola, bien y vos?</p>
+        </div>
+      </div>
+      
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer class="footer">
+  
+  <div class="textMorse">
+    <ion-label class="textMorseText">mensage</ion-label>
+  </div>
+  
+  <div class="inputMorse">
+    
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6 class="inputMorseLeft" (click)="dot()">
+          <ion-icon name="square"></ion-icon>
+        </ion-col>
+        <ion-col col-6 class="inputMorseRight" (click)="dash()">
+          <ion-icon name="remove"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+  </div>
+  
+  <div class="sendMorse" (click)="send()">
+    <h1 class="sendMorseText">Enviar</h1>
+    <ion-icon name="paper-plane" class="sendMorseIcon"></ion-icon>
+  </div>
+  
+</ion-footer>

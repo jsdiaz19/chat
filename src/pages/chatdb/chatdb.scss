@@ -1,0 +1,112 @@
+page-home {
+    
+    ion-header{
+        background: map-get($colors, primary);
+    }
+    
+  ion-content {
+    //background: url(../assets/imgs/chat-back.png) no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    overflow: hidden;
+    .item-md, .item-ios {
+      background: none;
+    }
+  }
+  ion-footer {
+    background: white;
+    ion-icon {
+      padding: 10px;
+      font-size: 20px;
+      color: green;
+    }
+  }
+  .chat-message {
+    width: 80%;
+    min-height: 40px;
+    .right-bubble {
+        position: relative;
+        background: map-get($colors, primary);
+    }
+
+    .left-bubble {
+        position: relative;
+        background: map-get($colors, primary);
+    }
+  }
+  
+}
+
+
+.footer{
+  height: 50%;
+}
+
+
+.textMorse{
+  height: 15%;
+  background: #fff;
+  text-align: center;
+  border-radius: 10px;
+  border-width: 1.5px;
+  border-style: solid;
+  border-color: map-get($colors, primary);
+}
+
+.textMorseText{
+  font-size: 10;
+}
+
+.sendMorse{
+  height: 20%;
+  background: map-get($colors, primary);
+  text-align: center;
+  padding: 4%;
+  border-radius: 10px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: #fff;
+}
+
+.sendMorseText{
+  color: #fff;
+  display: inline;
+}
+
+.sendMorseIcon{
+  color: #fff;
+  margin-left: 15px;
+  font-size: 30px;
+  display: inline;
+}
+
+
+.inputMorse{
+  height: 65%;
+}
+
+.inputMorseRight{
+  font-size: 50px;
+  text-align: center;
+  color: #fff;
+  height: 4em;
+  background: map-get($colors, primary);
+  padding-top: 25%;
+  border-radius: 10px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: #fff;
+}
+
+.inputMorseLeft{
+  font-size: 50px;
+  text-align: center;
+  color: #fff;
+  height: 4em;
+  background: map-get($colors, primary);
+  padding-top: 25%;
+  border-radius: 10px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: #fff;
+}

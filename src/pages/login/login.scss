@@ -1,0 +1,82 @@
+
+.Logo{
+    width: 200px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.LogDiv{
+    margin-top: 20px;
+}
+
+.LogDivItemNumber{
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.LogDivItemPassword{
+    margin-top: 15px;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Icon{
+    color: map-get($colors, primary);
+}
+
+.LostPassword{
+    width: 210px;
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.TextLostPassword{
+    font-size: 12px;
+    color: #545454;
+    font-weight: bold;
+}
+
+.login{
+    width: 200px;
+    height: 35px ;
+    color: #fff;
+    background: map-get($colors, primary);
+    text-align: center;
+    border-radius: 30px;
+    padding: 0;
+    margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.TextLogin{
+    font-size: 20px;
+    padding-top: 5px;
+}
+
+.Signup{
+    width: 100px;
+    text-align: center;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.TextSignup{
+    font-size: 10px;
+    margin: 0;
+    color: #545454;
+}
+
+.TextSignupBtn{
+    font-size: 15px;
+    color: map-get($colors, primary);
+    font-weight: bold;
+    margin: 0;
+    margin-top: 5px;
+}

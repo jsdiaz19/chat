@@ -1,0 +1,41 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content padding>
+  
+  <div class="Logo">
+    <img class="img" src="assets/imgs/icon.png">
+  </div>
+  
+  <div class="LogDiv">
+    <div>
+      <ion-item class="LogDivItemNumber">
+        <ion-label class="label"><ion-icon class="Icon" name="phone-portrait"></ion-icon></ion-label>
+        <ion-input [(ngModel)]="user.email" name="email" type="text" autocapitalize="off"placeholder="Correo"></ion-input>
+      </ion-item>
+      
+      <ion-item class="LogDivItemPassword">
+        <ion-label class="label"><ion-icon class="Icon"  name="lock"></ion-icon></ion-label>
+        <ion-input [(ngModel)]="user.password" name="password" type="password" placeholder="Contraseña" required></ion-input>
+      </ion-item>
+    </div>
+    
+    <div class="LostPassword" (click)="goToLostPassword()">
+      <h1 class="TextLostPassword">Olvidaste La Contraseña</h1>
+    </div>
+    
+    <div class="login" (click)="login()">
+      <h1 class="TextLogin">Iniciar Sesion</h1>
+    </div>
+    
+    <div class="Signup" (click)="goToRegister()">
+      <h1 class="TextSignup">No Tienes Cuenta</h1>
+      <h1 class="TextSignupBtn">Registrate</h1>
+    </div>
+  </div>
+  
+  
+</ion-content>
