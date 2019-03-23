@@ -15,42 +15,67 @@
     <img class="img" src="assets/imgs/icon.png">
   </div>
   
+
   <ion-card class="Card">
     <ion-card-header class="Header-Card">
       Nueva Cuenta
     </ion-card-header>
     <ion-card-content>
-      <ion-item class="LogDivItemName">
-        <ion-label class="label"><ion-icon class="Icon" name="contact"></ion-icon></ion-label>
-        <ion-input type="text" [(ngModel)]="user.nombre" placeholder="Nombre Completo"></ion-input>
-      </ion-item>
-        
-      <ion-item class="LogDivItemName">
-        <ion-label class="label"><ion-icon class="Icon" name="contact"></ion-icon></ion-label>
-        <ion-input type="text" [(ngModel)]="user.correo" placeholder="correo"></ion-input>
-      </ion-item>
+      <form [formGroup]="Form"> 
+        <ion-item class="LogDivItemName">
+          <ion-label class="label"><ion-icon class="Icon" name="contact"></ion-icon></ion-label>
+          <ion-input type="text"  formControlName="Nom" placeholder="Nombre Completo"></ion-input>
+          
+        </ion-item>
 
-      <ion-item class="LogDivItemNumber">
-        <ion-label class="label"><ion-icon class="Icon" name="phone-portrait"></ion-icon></ion-label>
-        <ion-input type="number" [(ngModel)]="user.tel"placeholder="Numero Celuar"></ion-input>
-      </ion-item>
+        <ion-item class="Error-message">
+            <p style="color:red" *ngIf="this.Form.controls['Nom'].hasError('required') && (this.Form.controls['Nom'].touched || this.Form.controls['Nom'].dirty)">Es  campo obligatorio</p>
+        </ion-item>        
+
+        <ion-item class="LogDivItemName">
+          <ion-label class="label"><ion-icon class="Icon" name="contact"></ion-icon></ion-label>
+          <ion-input type="email" formControlName="Email" placeholder="correo"></ion-input>
+        </ion-item>
+
+        <ion-item class="Error-message">
+          <p style="color:red" *ngIf="this.Form.controls['Email'].hasError('required') && (this.Form.controls['Email'].touched || this.Form.controls['Email'].dirty)">Es un campo obligatorio</p>
+        </ion-item>
+
+        <ion-item class="LogDivItemNumber">
+          <ion-label class="label"><ion-icon class="Icon" name="phone-portrait"></ion-icon></ion-label>
+          <ion-input type="number" formControlName="tel" placeholder="Numero Celuar"></ion-input>
+        </ion-item>
         
-      <ion-item class="LogDivItemPassword">
-        <ion-label class="label"><ion-icon class="Icon"  name="lock"></ion-icon></ion-label>
-        <ion-input type="password" placeholder="Contraseña"></ion-input>
-      </ion-item>
-      
-      <ion-item class="LogDivItemPassword">
-        <ion-label class="label"><ion-icon class="Icon"  name="unlock"></ion-icon></ion-label>
-        <ion-input type="password" [(ngModel)]="user.password" placeholder="Confirmar Contraseña"></ion-input>
-      </ion-item>
+        <ion-item class="Error-message">
+          <p style="color:red" *ngIf="this.Form.controls['tel'].hasError('required') && (this.Form.controls['tel'].touched || this.Form.controls['tel'].dirty)">Es un campo obligatorio</p>
+        </ion-item>
+
+        <ion-item class="LogDivItemPassword">
+          <ion-label class="label"><ion-icon class="Icon"  name="lock"></ion-icon></ion-label>
+          <ion-input type="password" formControlName="password" placeholder="Contraseña"></ion-input>
+        </ion-item>
+        
+        <ion-item class="Error-message">
+          <p style="color:red" *ngIf="this.Form.controls['password'].hasError('required') && (this.Form.controls['password'].touched || this.Form.controls['password'].dirty)">Es un campo obligatorio</p>
+        </ion-item>
+
+        <ion-item class="LogDivItemPassword">
+          <ion-label class="label"><ion-icon class="Icon"  name="unlock"></ion-icon></ion-label>
+          <ion-input type="password"  formControlName="confirmed" placeholder="Confirmar Contraseña"></ion-input>
+        </ion-item>
+
+        <ion-item class="Error-message">
+          <p style="color:red" *ngIf="this.Form.controls['confirmed'].hasError('required') && (this.Form.controls['confirmed'].touched || this.Form.controls['confirmed'].dirty)">Es un campo obligatorio</p>
+        </ion-item>
+      </form>
     </ion-card-content>
-ddd
-    
   </ion-card>
-    
+
+  
+
+
   <div class="Next" (click)="Register()">
-    <h1 class="TextNext">Registrar</h1>
+    <button type="submit" class="TextNext">Registrar</button>
     <ion-icon class="Arror-Icon-Forward" name="arrow-round-forward"></ion-icon>
   </div>
 

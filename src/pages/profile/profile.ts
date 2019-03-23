@@ -18,7 +18,6 @@ export class ProfilePage {
   CurrentUser
   constructor(public navCtrl: NavController, public navParams: NavParams,private bd: BdProvider) {
     this.CurrentUser=this.bd.GetUser();
-    console.log(this.CurrentUser);
   }
 
   ionViewDidLoad() {

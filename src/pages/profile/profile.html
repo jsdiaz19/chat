@@ -21,15 +21,15 @@
     <ion-card-content>
       <ion-item>
         <ion-label class="label">Nombre</ion-label>
-        <ion-input placeholder="{{CurrentUser.nombre}}"></ion-input>
+        <ion-input value="{{CurrentUser.nombre}}" readonly></ion-input>
       </ion-item>
       <ion-item>
         <ion-label class="label">Celuar</ion-label>
-        <ion-input placeholder="{{CurrentUser.tel}}"></ion-input>
+        <ion-input value="{{CurrentUser.tel}}" readonly></ion-input>
       </ion-item>
       <ion-item>
         <ion-label class="label">E-mail</ion-label>
-        <ion-input placeholder="{{CurrentUser.correo}}"></ion-input>
+        <ion-input value="{{CurrentUser.correo}}" readonly></ion-input>
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -48,7 +48,7 @@
   
   <ion-card class="Save-Card">
     <ion-item class="SaveItem">
-        <div text-center class="Save" id="Save">Save</div>
+        <div text-center class="Save" id="Save"><button ion-button (click)="Update()">Save</button></div>
     </ion-item>
   </ion-card>
   

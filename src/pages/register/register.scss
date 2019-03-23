@@ -29,7 +29,7 @@ page-register {
     }
     
     .Card{
-        margin-top: 20px;
+        margin-top: 130px;
         background: #fff;
         padding-bottom: 10px;
         margin-bottom: 20px;
@@ -38,6 +38,7 @@ page-register {
     .Card .Header-Card{
         background-color: map-get($colors, primary);
         color: #fff;
+    
         
     }
 }
@@ -49,12 +50,18 @@ page-register {
     margin-right: auto;
 }
 
-
 .LogDivItemNumber{
-    margin-top: 15px;
+    margin-top: 5px;
     width: 250px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.Error-message{
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+   
 }
 
 .LogDivItemPassword{
@@ -85,6 +92,8 @@ page-register {
 .TextNext{
     display: inline;
     font-size: 20px;
+    background: map-get($colors, primary);
+    color: #fff;
 }
 
 .Arror-Icon-Forward{

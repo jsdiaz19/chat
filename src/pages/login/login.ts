@@ -4,6 +4,7 @@ import { RegisterPage } from '../register/register';
 import { LostpasswordPage } from '../lostpassword/lostpassword';
 import { HomePage } from '../home/home';
 import {BdProvider } from '../../providers/bd/bd';
+import {FormGroup, Validators,FormControl } from '@angular/forms';
 /**
  * Generated class for the LoginPage page.
  *
@@ -17,7 +18,10 @@ import {BdProvider } from '../../providers/bd/bd';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  user= { email : '', password : ''};
+  Form= new FormGroup({
+    user: new FormControl('',Validators.required),
+    password: new FormControl('',Validators.required)
+  });
   data;
   constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl : AlertController,public auth :  BdProvider) {
   }
@@ -34,17 +38,17 @@ export class LoginPage {
     this.navCtrl.push(RegisterPage);
   }
   
-  // goToLostPassword(){
-  //   this.navCtrl.push(LostpasswordPage);
-  // } 
+  goToLostPassword(){
+    this.navCtrl.push(LostpasswordPage);
+  } 
 
-  login()
-  {
-      this.auth.loginUser(this.user.email,this.user.password ).then((user) => {
+  login(){
+    if(!this.Form.invalid){
+      this.auth.loginUser(this.Form.controls['user'].value,this.Form.controls['password'].value ).then((user) => {
         this.auth.GetData().subscribe(result=>{
           this.data=result;
           this.data.forEach(element => {
-            if(element.correo==this.user.email){
+            if(element.correo==this.Form.controls['user'].value){
               this.auth.SetUser(element);
               this.navCtrl.push(HomePage);
             }
@@ -61,5 +65,10 @@ export class LoginPage {
         alert.present();
       })
     }
+    else{
+      alert('Hay campos incorrectamente diligenciado');
+    }
+      
+  }
   
 }

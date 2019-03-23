@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
+
+import * as firebase from 'firebase';
 /*
   Generated class for the BdProvider provider.
 
@@ -32,6 +34,7 @@ export class BdProvider {
     return this.afDB.list("usuarios/").valueChanges();
   }
 
+
   SetUser(usr){
     this.CurrentUsuer=usr;
   }
@@ -40,4 +43,20 @@ export class BdProvider {
     return this.CurrentUsuer;
   }
 
+  logout(){
+    this.afAuth.auth.signOut().then(()=>{
+      
+    })
+  }
+
+  resetPassword(email: string) {
+    var auth = firebase.auth();
+    return auth.sendPasswordResetEmail(email)
+      // .then(() => console.log("email sent"))
+      // .catch((error) => console.log(error))
+  }
+
+  get Session(){
+    return this.afAuth.authState;
+  }
 }

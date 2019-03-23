@@ -12,17 +12,26 @@
   
   <div class="LogDiv">
     <div>
-      <ion-item class="LogDivItemNumber">
-        <ion-label class="label"><ion-icon class="Icon" name="phone-portrait"></ion-icon></ion-label>
-        <ion-input [(ngModel)]="user.email" name="email" type="text" autocapitalize="off"placeholder="Correo"></ion-input>
-      </ion-item>
-      
-      <ion-item class="LogDivItemPassword">
-        <ion-label class="label"><ion-icon class="Icon"  name="lock"></ion-icon></ion-label>
-        <ion-input [(ngModel)]="user.password" name="password" type="password" placeholder="Contraseña" required></ion-input>
-      </ion-item>
+      <form [formGroup]="Form"> 
+        <ion-item class="LogDivItemNumber">
+          <ion-label class="label"><ion-icon class="Icon" name="phone-portrait"></ion-icon></ion-label>
+          <ion-input formControlName="user" type="text" autocapitalize="off"placeholder="Correo"></ion-input>
+        </ion-item>
+        
+        <ion-item class="LogDivItemNumber">
+          <p style="color:red" *ngIf="this.Form.controls['user'].hasError('required') && (this.Form.controls['user'].touched || this.Form.controls['user'].dirty)">Es  campo obligatorio</p>
+        </ion-item>
+
+        <ion-item class="LogDivItemPassword">
+          <ion-label class="label"><ion-icon class="Icon"  name="lock"></ion-icon></ion-label>
+          <ion-input formControlName="password" type="password" placeholder="Contraseña" required></ion-input>
+        </ion-item>
+
+        <ion-item class="LogDivItemNumber">
+          <p style="color:red" *ngIf="this.Form.controls['password'].hasError('required') && (this.Form.controls['password'].touched || this.Form.controls['password'].dirty)">Es  campo obligatorio</p>
+        </ion-item>
+      </form>
     </div>
-    
     <div class="LostPassword" (click)="goToLostPassword()">
       <h1 class="TextLostPassword">Olvidaste La Contraseña</h1>
     </div>
