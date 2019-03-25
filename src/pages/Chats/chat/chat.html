@@ -9,7 +9,7 @@
 <ion-content>
   <ion-list>
     <ion-item no-lines>
-      <div class="chat-message" text-right >
+      <!-- <div class="chat-message" text-right >
         <div class="right-bubble">
           <p text-wrap>Hola como estas?</p>
         </div>
@@ -18,7 +18,7 @@
         <div class="left-bubble">
           <p text-wrap>Hola, bien y vos?</p>
         </div>
-      </div>
+      </div> -->
       
     </ion-item>
   </ion-list>
@@ -28,10 +28,12 @@
   <ion-grid>
     <ion-row>
       <ion-col col-10>
-        <ion-input type="text" placeholder="Type a message" name="message"></ion-input>
+        <ion-input type="text" placeholder="Escribe un mensaje" [(ngModel)]="message"></ion-input>
       </ion-col>
       <ion-col col-2 class="icon-plane" >
-        <ion-icon name="paper-plane"></ion-icon>
+        <button ion-button (click)="SendMessage()" >
+          <ion-icon name="paper-plane"></ion-icon>
+        </button>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController} from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { LoginPage } from '../login/login';
 import {BdProvider } from '../../providers/bd/bd';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
+import { FormGroup, Validators,FormControl } from '@angular/forms';
 
 /**
  * Generated class for the RegisterPage page.
@@ -21,14 +21,23 @@ import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 export class RegisterPage {
   notification;
   usr={};
+  myPhoto: any;
+  myPhotosRef: any;
+  myPhotoURL: any;
   Form= new FormGroup({
     Nom: new FormControl('',Validators.required),
     Email: new FormControl('',Validators.required),
     tel: new FormControl('',Validators.required),
     password: new FormControl('',Validators.required),
     confirmed: new FormControl('',Validators.required),
+    type: new FormControl('',Validators.required),
   });
-  constructor(public navCtrl: NavController, public navParams: NavParams,public auth :  BdProvider,public alertCtrl : AlertController,private afDB: AngularFireDatabase) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public auth :  BdProvider,
+    public alertCtrl : AlertController,
+    private afDB: AngularFireDatabase) {
 
   }
 
@@ -44,27 +53,11 @@ export class RegisterPage {
     this.navCtrl.push(LoginPage);
   }
 
-  // Register(){
-  //   this.auth.registerUser(this.user.correo,this.user.password)
-  //   .then((user) => {
-  //     // El usuario se ha creado correctamente
-  //   })
-  //   .catch(err=>{
-  //     let alert = this.alertCtrl.create({
-  //       title: 'Error',
-  //       subTitle: err.message,
-  //       buttons: ['Aceptar']
-  //     });
-  //     alert.present();
-  //   })
-
-  // }
-
   Register(){
     if(!this.Form.invalid && this.Form.controls['password'].value==this.Form.controls['confirmed'].value){
       this.auth.registerUser(this.Form.controls['Email'].value,this.Form.controls['password'].value)
       .then((user) => {
-        this.afDB.list("/usuarios/").push( {nombre: this.Form.controls['Nom'].value,tel: this.Form.controls['tel'].value,password:this.Form.controls['password'].value,correo:this.Form.controls['Email'].value} );
+        this.afDB.list("/usuarios/").push( {nombre: this.Form.controls['Nom'].value,tel: this.Form.controls['tel'].value,password:this.Form.controls['password'].value,correo:this.Form.controls['Email'].value, discapacidad: this.Form.controls['type'].value} );
         this.navCtrl.push(LoginPage);
       })
       .catch(err=>{
@@ -82,7 +75,4 @@ export class RegisterPage {
     }
   }
 
-  test(){
-    console.log(this.Form.controls['Nom'].hasError('required'),this.Form.touched,'ggg');
-  }
 }

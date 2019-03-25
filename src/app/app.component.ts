@@ -14,7 +14,7 @@ export class MyApp {
   data;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private auth: BdProvider) {
     this.auth.Session.subscribe(session=>{
-      if(session){
+      if(session!=null && session){
         this.auth.GetData().subscribe(result=>{
           this.data=result;
           this.data.forEach((element)=>{

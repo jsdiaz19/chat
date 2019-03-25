@@ -67,6 +67,17 @@
         <ion-item class="Error-message">
           <p style="color:red" *ngIf="this.Form.controls['confirmed'].hasError('required') && (this.Form.controls['confirmed'].touched || this.Form.controls['confirmed'].dirty)">Es un campo obligatorio</p>
         </ion-item>
+
+        <ion-item>
+            <ion-label>Tipo de discapacidad</ion-label>
+            <ion-select formControlName="type">
+              <ion-option value="Visual">Visual</ion-option>
+              <ion-option value="Auditiva">Auditiva</ion-option>
+              <ion-option value="Auditiva y Visual">Auditiva y Visual</ion-option>
+              <ion-option value="Ninguna">Ninguna</ion-option>
+            </ion-select>
+          </ion-item>
+
       </form>
     </ion-card-content>
   </ion-card>

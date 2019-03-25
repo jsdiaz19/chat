@@ -8,7 +8,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { LoginPage } from '../pages/login/login';
 import { LostpasswordPage } from '../pages/lostpassword/lostpassword';
 import { RegisterPage } from '../pages/register/register';
-import { ChatPage } from '../pages/chat/chat';
+import { ChatPage } from '../pages/Chats/chat/chat';
 import { ProfilePage } from '../pages/profile/profile';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -20,8 +20,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { DataProvider } from '../providers/data/data';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 export const firebaseConfig = {
   apiKey: "AIzaSyCEN16Yevh_zCkq2nREpB7aJGgRA-tIQEE",
@@ -68,7 +68,6 @@ export const firebaseConfig = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     BdProvider,
-    DataProvider
   ]
 })
 export class AppModule {}

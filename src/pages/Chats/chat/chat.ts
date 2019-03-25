@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import {BdProvider} from '../../../providers/bd/bd';
 /**
  * Generated class for the ChatPage page.
  *
@@ -15,11 +15,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ChatPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  message: string;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private BD: BdProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ChatPage');
   }
 
+  SendMessage(){
+    this.BD.SendMessage(this.message);
+  }
 }
