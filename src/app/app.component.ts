@@ -1,34 +1,28 @@
 import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import {LoginPage} from '../pages/login/login';
-import {BdProvider} from '../providers/bd/bd';
+import {DataProvider} from '../providers/data/data';
+import * as firebase from 'firebase';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   rootPage;
-  data;
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private auth: BdProvider) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private auth: DataProvider) {
     this.auth.Session.subscribe(session=>{
       if(session!=null && session){
-        this.auth.GetData().subscribe(result=>{
-          this.data=result;
-          this.data.forEach((element)=>{
-            if(element.correo==session.email){
-              this.auth.SetUser(element);
-            }
-          })
-        })
-          this.rootPage = HomePage;
-
+        if(this.auth.CurrentUser()== undefined){
+          this.auth.SetUser(firebase.auth().currentUser.uid);
+        } 
+        this.rootPage = HomePage; 
       }
-        else{
-          this.rootPage = LoginPage;
-        }
+      else{ 
+        this.rootPage = LoginPage; 
+      }
     });
     
     platform.ready().then(() => {

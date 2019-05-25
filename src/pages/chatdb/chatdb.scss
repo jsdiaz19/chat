@@ -45,23 +45,24 @@ page-home {
 
 .textMorse{
   height: 15%;
-  background: #fff;
+  background:#fff;
   text-align: center;
   border-radius: 10px;
   border-width: 1.5px;
   border-style: solid;
   border-color: map-get($colors, primary);
+
+  h1{
+    margin: 0;
+  }
 }
 
-.textMorseText{
-  font-size: 10;
-}
 
 .sendMorse{
   height: 20%;
-  background: map-get($colors, primary);
+  background: #55acee;
   text-align: center;
-  padding: 4%;
+  padding: 3%;
   border-radius: 10px;
   border-width: 3px;
   border-style: solid;
@@ -71,42 +72,123 @@ page-home {
 .sendMorseText{
   color: #fff;
   display: inline;
+  margin-left: 10px;
 }
 
 .sendMorseIcon{
   color: #fff;
-  margin-left: 15px;
+  margin-left: 50%;
   font-size: 30px;
-  display: inline;
+  
 }
 
 
 .inputMorse{
-  height: 65%;
+  height: 80%;
+  margin-top: 20px;
 }
 
+
+
 .inputMorseRight{
-  font-size: 50px;
-  text-align: center;
   color: #fff;
-  height: 4em;
-  background: map-get($colors, primary);
+  height: 0.5em;
+  background: #32db64;
+  align-items: center;
   padding-top: 25%;
   border-radius: 10px;
   border-width: 3px;
   border-style: solid;
   border-color: #fff;
+
+  .icon{
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    font-size: 60px;
+    
+  }
 }
 
 .inputMorseLeft{
-  font-size: 50px;
-  text-align: center;
   color: #fff;
-  height: 4em;
-  background: map-get($colors, primary);
+  height: 0.5em;
+  background: #f53d3d;
   padding-top: 25%;
   border-radius: 10px;
   border-width: 3px;
   border-style: solid;
   border-color: #fff;
+  .icon{
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    font-size: 60px;
+    
+  }
 }
+
+.inputMorseLeft:active{
+  background: darkorange;
+} 
+
+  .inputMorseSpace{
+    color: #fff;
+    height: 3.5em;
+    margin-top: 8 px;
+    background: #ffce00 ;
+    align-items: center;
+    border-radius: 10px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: #fff;
+  
+    .icon{
+      position: absolute;
+      left: 50%;
+      
+      
+    }
+  }
+
+  .message {
+    p {
+      color: black;
+      font-size: 13px;
+      margin: 10px;
+      max-width: 95%;
+      min-width: 55%;
+      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+      padding: 10px 15px 10px 7px;
+      margin: 5px 0;
+      background: white;
+    }
+
+  }
+
+  .message.incoming {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    p {
+
+      border-radius: 0 11px 11px 11px;
+      background: #ede2fd;
+    }
+  }
+
+  .message.outcoming {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    p {
+      border-radius: 11px 11px 0 11px;
+    }
+  }
+
+
+

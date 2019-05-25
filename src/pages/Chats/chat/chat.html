@@ -1,40 +1,31 @@
 <ion-header color=primary>
   <ion-navbar color=primary>
-    <ion-title>
-      Fulanito De Tal
-    </ion-title>
+
+    <ion-title> {{name.charAt(0).toUpperCase() + name.slice(1)}} </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <ion-list>
-    <ion-item no-lines>
-      <!-- <div class="chat-message" text-right >
-        <div class="right-bubble">
-          <p text-wrap>Hola como estas?</p>
-        </div>
-      </div>
-      <div class="chat-message" text-left >
-        <div class="left-bubble">
-          <p text-wrap>Hola, bien y vos?</p>
-        </div>
-      </div> -->
-      
-    </ion-item>
-  </ion-list>
-</ion-content>
 
-<ion-footer>
-  <ion-grid>
-    <ion-row>
-      <ion-col col-10>
-        <ion-input type="text" placeholder="Escribe un mensaje" [(ngModel)]="message"></ion-input>
-      </ion-col>
-      <ion-col col-2 class="icon-plane" >
-        <button ion-button (click)="SendMessage()" >
-          <ion-icon name="paper-plane"></ion-icon>
-        </button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-footer>
+<div class="main">
+  <div class="chat-box">
+    <div class="message-area">
+      <div class="message" *ngFor="let mensaje of message" [ngClass]="mensaje.type">
+        <p>{{mensaje.menssaje}}</p>
+      </div>
+    </div>
+
+    <div class="emo-area">
+        <!-- emoji-panel component comes here -->
+    </div>
+    <div class="input-area">
+        <form (submit)="SendMessage()" name="messageForm" >
+          <ion-item>
+            <button type="submit" item-right> <ion-icon name="md-send" color="danger"></ion-icon> </button>
+            <ion-input type="text" name="message" id="message" [(ngModel)]="mensaje" placeholder="Escribe algo..."></ion-input>
+
+          </ion-item>
+          
+        </form>
+      </div>
+  </div>
+</div>

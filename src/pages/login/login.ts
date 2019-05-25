@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,AlertController  } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController,Platform  } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { LostpasswordPage } from '../lostpassword/lostpassword';
 import { HomePage } from '../home/home';
-import {BdProvider } from '../../providers/bd/bd';
+import {LoginProvider} from '../../providers/login/login'
+import {DataProvider} from '../../providers/data/data'
 import {FormGroup, Validators,FormControl } from '@angular/forms';
+import { Toast } from '@ionic-native/toast/ngx';
 /**
  * Generated class for the LoginPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+
+declare var window: any;
 
 @IonicPage()
 @Component({
@@ -22,17 +26,14 @@ export class LoginPage {
     user: new FormControl('',Validators.required),
     password: new FormControl('',Validators.required)
   });
-  data;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl : AlertController,public auth :  BdProvider) {
+ 
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public alertCtrl : AlertController,
+    public auth :  LoginProvider, 
+    private Data: DataProvider,
+    private platform: Platform) {
   }
-
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad LoginPage');
-  // }
-  
-  // goToHome(){
-  //   this.navCtrl.push(HomePage);
-  // }
   
   goToRegister(){
     this.navCtrl.push(RegisterPage);
@@ -42,31 +43,24 @@ export class LoginPage {
     this.navCtrl.push(LostpasswordPage);
   } 
 
+  ShowToast(message){
+    this.platform.ready().then(()=>{
+      window.plugins.toast.show(message,"short","bottom")
+    })
+  }
   login(){
     if(!this.Form.invalid){
-      this.auth.loginUser(this.Form.controls['user'].value,this.Form.controls['password'].value ).then((user) => {
-        this.auth.GetData().subscribe(result=>{
-          this.data=result;
-          this.data.forEach(element => {
-            if(element.correo==this.Form.controls['user'].value){
-              this.auth.SetUser(element);
-              this.navCtrl.push(HomePage);
-            }
-          });
+      this.auth.loginUser(this.Form.controls['user'].value,this.Form.controls['password'].value)
+        .then(user=>{
+          //this.ShowToast('Logeado');
+          this.Data.SetUser(user.user.uid);
         })
-        
-      })
-       .catch(err=>{
-        let alert = this.alertCtrl.create({
-          title: 'Error',
-          subTitle: err.message,
-          buttons: ['Aceptar']
-        });
-        alert.present();
-      })
+        .catch( err=>{
+          //this.ShowToast('El usuario no existo');
+        })
     }
     else{
-      alert('Hay campos incorrectamente diligenciado');
+      //this.ShowToast('Hay campos incorrectamente diligenciado');
     }
       
   }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,AlertController  } from 'ionic-angular';
 import { LoginPage } from '../login/login';
-import {BdProvider} from '../../providers/bd/bd';
+import {DataProvider} from '../../providers/data/data';
 /**
  * Generated class for the LostpasswordPage page.
  *
@@ -16,7 +16,7 @@ import {BdProvider} from '../../providers/bd/bd';
 })
 export class LostpasswordPage {
   email;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl : AlertController, private auth: BdProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public alertCtrl : AlertController, private auth: DataProvider) {
   }
 
   ionViewDidLoad() {

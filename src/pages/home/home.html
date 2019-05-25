@@ -1,21 +1,52 @@
+<ion-header color=primary>
+  <ion-navbar color=primary>
+
+    <ion-buttons item-left>
+        <button ion-button icon-only (click)="goToPerfil()"><ion-icon name="md-contact"></ion-icon></button>
+      </ion-buttons>
+      
+    <ion-title start>Chat</ion-title>
+
+      <ion-buttons end>
+        <button ion-button icon-only (click)="addFriend()"><ion-icon name="md-person-add"></ion-icon></button>
+      </ion-buttons>
+  </ion-navbar>
+  
+
+
+</ion-header>
+
+
+
 <ion-content #list padding cache-view="false">
-  <div class="login" (click)="goToLogin()">
-    <h1 class="TextLogin">Cerrar Sesion</h1>
-  </div>
-  
-  <div class="login" (click)="goToPerfil()">
-    <h1 class="TextLogin">Perfil</h1>
-  </div>
-  
-  
+  <div class="spaceBar">
+    <ion-searchbar [(ngModel)]="search" (ionInput)="setFilteredItems()" placeholder="Busca en tus contactos" ></ion-searchbar> 
+  </div> 
   <ion-list>
-    <ion-item class="friend" (click)="goToChat()" *ngFor= "let mensaje of message">
-      <ion-avatar item-start class="friend-img">
-        <img src="assets/imgs/1.png">
+
+    <ion-item class="message" (click)="goToChat(mensaje.uid,mensaje.nombre)" *ngFor= "let mensaje of filter" lines="inset">
+      <ion-avatar item-start>
+        <ion-text-avatar>F</ion-text-avatar>
       </ion-avatar>
-      <h1 class="friend-name">{{mensaje.nombre}}</h1>
-      <h2 class="friend-message">{{mensaje.mensaje}}</h2>
+      <h2> {{mensaje.nombre}}</h2>
+      <p style="padding-right:0">mensajes nuevos</p>
+      <ion-badge color="danger" *ngIf="mensaje.notification=='not-viewed'" item-end>+1</ion-badge> 
+
+      <!-- <div class="msg-detail">
+        <div class="msg-info">
+            <p style="text-transform: capitalize"> {{mensaje.nombre}}</p>
+        </div>
+        <div class="msg-content">
+          <p class="viewed"  *ngIf="mensaje.notification=='not-viewed'" >mensajes nuevos...</p>
+          <ion-icon name="md-mail" *ngIf="mensaje.notification=='not-viewed'" ></ion-icon>
+        </div>
+      </div> -->
     </ion-item>
   </ion-list>
 
+      
+
 </ion-content>
+
+
+

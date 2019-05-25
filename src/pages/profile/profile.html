@@ -7,8 +7,13 @@
 <ion-header color=primary>
 
   <ion-navbar color=primary>
-    <ion-title>Settings</ion-title>
+    <ion-title>Perfil</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)=" Logout()"><ion-icon name="md-log-out"></ion-icon></button>
+    </ion-buttons>
   </ion-navbar>
+
+  
 
 </ion-header>
 
@@ -16,7 +21,7 @@
   
   <ion-card class="SettingsCard">
     <ion-card-header class="Header-Card" color=primary>
-      Personal Information
+      Informacion Personal
     </ion-card-header>
     <ion-card-content>
       <ion-item>
@@ -24,7 +29,7 @@
         <ion-input value="{{CurrentUser.nombre}}" readonly></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label class="label">Celuar</ion-label>
+        <ion-label class="label">Celular</ion-label>
         <ion-input value="{{CurrentUser.tel}}" readonly></ion-input>
       </ion-item>
       <ion-item>
@@ -42,18 +47,30 @@
   
   <ion-card class="SettingsCard">
     <ion-card-header class="Header-Card" color=primary>
-      Change Password
+      Cambiar Contraseña
     </ion-card-header>
     <ion-card-content>
-      <ion-input placeholder="Password"></ion-input>
-      <ion-input placeholder="New Password"></ion-input>
-      <ion-input placeholder="Confirm Password"></ion-input>
+      <form [formGroup]="Form"> 
+        <ion-item>
+          <ion-input formControlName="Password" placeholder="Contraseña"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-input formControlName="NewPassword" placeholder="Nueva Contraseña"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-input formControlName="PasswordConfirm" placeholder="Confirmar Contraseña"></ion-input>
+        </ion-item>
+      
+      </form>
     </ion-card-content>
+      
   </ion-card>
   
   <ion-card class="Save-Card">
     <ion-item class="SaveItem">
-        <div text-center class="Save" id="Save"><button ion-button (click)="Update()">Save</button></div>
+        <div text-center class="Save" id="Save"><button (click)="ChangePassword()" ion-button >Guardar</button></div>
     </ion-item>
   </ion-card>
   

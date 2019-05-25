@@ -1,0 +1,44 @@
+<!--
+  Generated template for the AddFriendPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header color=primary>
+
+  <ion-navbar color=primary>
+    <ion-title>Agregar amigos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item >
+      <span item-left><ion-icon name="mail"></ion-icon></span>
+      <ion-input placeholder="Digite el correo" [(ngModel)]="email"> </ion-input>
+  </ion-item>
+  
+  <div class="container" (click)="AddFriend()">
+    <h1 class="save">Agregar</h1>
+  </div>
+  
+
+    <ion-list class="list">
+        <ion-item-sliding *ngFor="let key of filteredusers">
+          <ion-item >
+            <ion-avatar item-left>
+              <img src="{{key.photoURL}}">
+            </ion-avatar>
+            <h2>{{key.nombre}}</h2>
+          </ion-item>
+          <ion-item-options slide="left">
+            <button ion-button color="primary" (click)="sendreq(key)">
+              <ion-icon name="person-add"></ion-icon>
+              Add
+            </button>
+          </ion-item-options>
+          
+        </ion-item-sliding>
+      </ion-list>
+</ion-content>
