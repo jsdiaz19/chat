@@ -21,7 +21,7 @@ export class HomePage {
   message;
   search: string ='';
   myrequests;
-  constructor(public navCtrl: NavController, private auth: DataProvider,public events: Events,private zone: NgZone, private vibration: Vibration,private afDB: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, private auth: DataProvider,public events: Events,private zone: NgZone,private afDB: AngularFireDatabase) {
     this.GetMessage();
     this.afDB.list("/usuarios/"+ firebase.auth().currentUser.uid+"/mensajes").valueChanges().subscribe( res=>{
       this.zone.run(() => {
@@ -75,7 +75,7 @@ export class HomePage {
       });
     })
     
-    navigator.vibrate([1000]);
+    
   }
 
   addFriend(){

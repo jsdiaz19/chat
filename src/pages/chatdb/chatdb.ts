@@ -471,6 +471,22 @@ Traducir(code){
     return message;
   }
 
+VibrateMessage(message){
+    console.log('ggg',message.menssaje);
+
+    var string: String = message["menssaje"]
+
+    for (var i in string){
+        if(string[i] == '.'){
+            navigator.vibrate([250]);
+        }
+        else if(string[i] == '-'){
+            navigator.vibrate([500]);
+        }
+    }
+    
+}
+
 getChat(){
     var messageRef= firebase.database().ref("/usuarios/"+ firebase.auth().currentUser.uid+"/mensajes/"+this.ChatId);
     messageRef.on("value",(snap)=>{
@@ -480,9 +496,10 @@ getChat(){
       for(var key in data){
         if(key!='nombre' && key!='viewed'){
           this.mensajes.push({menssaje: this.Traducir(data[key]['message']), type: data[key]['type']} );
-          
         }
       }
+      console.log(this.mensajes[0]);
+      this.VibrateMessage(this.mensajes[0]);
     })
   }
 

@@ -43,6 +43,7 @@ export class ChatPage {
       this.mensaje='';
     }
   }
+
   getChat(){
     var messageRef= firebase.database().ref("/usuarios/"+ firebase.auth().currentUser.uid+"/mensajes/"+this.ChatId);
     messageRef.on("value",(snap)=>{
