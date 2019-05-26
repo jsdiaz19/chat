@@ -96,5 +96,5 @@
     <plugin name="cordova-plugin-x-toast" spec="2.7.2" />
     <allow-navigation href="http://192.168.1.55:8100" />
     <plugin name="cordova-plugin-keyboard" spec="^1.2.0" />
-    <engine name="android" spec="7.1.4" />
+    <engine name="android" spec="^7.1.4" />
 </widget>
