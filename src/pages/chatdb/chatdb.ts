@@ -16,11 +16,15 @@ import {DataProvider} from '../../providers/data/data';
   templateUrl: 'chatdb.html',
 })
 export class ChatdbPage {
-  
   message: string="";
   mensajes;
   ChatId: string;
   name: string;
+  keyDownDate = null;
+  keyUpDate = null;
+  keyPressDuration = null;
+  spaceDuration = 500;
+  
   _ALPHABET_={
     "A": ".-",
     "B": "-...",
@@ -390,6 +394,26 @@ export class ChatdbPage {
     this.message+='-';
   }  
   
+  keydownSpaceLetter(){
+    this.keyDownDate = new Date();
+1  }
+
+
+  keyupSpaceWord(){
+    this.keyUpDate = new Date();
+    this.keyPressDuration = ( this.keyUpDate - this.keyDownDate);
+
+    if (this.keyPressDuration <= this.spaceDuration){
+        this.SpaceLetter();
+    } else {
+        this.SpaceWord();
+    }
+
+    this.keyDownDate = null;
+    this.keyUpDate = null;
+
+  }
+
   SpaceLetter(){
     document.getElementById('message').textContent+=" ";
     this.message+=' ';
@@ -398,6 +422,11 @@ export class ChatdbPage {
   SpaceWord(){
     document.getElementById('message').textContent+=" ";
     this.message+=" /";
+  }
+
+  ClearString(){
+    document.getElementById('message').textContent="";
+    this.message ='';
   }
 
   Morse(){
