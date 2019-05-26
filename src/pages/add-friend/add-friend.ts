@@ -49,11 +49,11 @@ export class AddFriendPage {
           isUser= true;
           this.afDB.list("/usuarios/"+ key+"/mensajes/"+current.uid,).push({type: 'incoming', message: 'nuevos amigos'});
           this.afDB.list("/usuarios/"+key+"/mensajes/"+current.uid).set("nombre",current.nombre);
-          this.afDB.list("/usuarios/"+key+"/mensajes/"+current.uid).set("viewed",'viewed');
+          this.afDB.list("/usuarios/"+key+"/mensajes/"+current.uid).set("viewed",'not-viewed');
           
           this.afDB.list("/usuarios/"+ current.uid+"/mensajes/"+ key).push({type: 'outcoming',message: 'nuevo amigos'});
           this.afDB.list("/usuarios/"+current.uid+"/mensajes/"+key).set("nombre",data[key]['info'].nombre);
-          this.afDB.list("/usuarios/"+current.uid+"/mensajes/"+key).set("viewed",'viewed');
+          this.afDB.list("/usuarios/"+current.uid+"/mensajes/"+key).set("viewed",'not-viewed');
           //this.ShowToast('Ahora son amigos');
           break;
         }

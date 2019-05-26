@@ -47,7 +47,6 @@ export class ChatPage {
     var messageRef= firebase.database().ref("/usuarios/"+ firebase.auth().currentUser.uid+"/mensajes/"+this.ChatId);
     messageRef.on("value",(snap)=>{
       var data= snap.val();
-      this.afDB.list("/usuarios/"+firebase.auth().currentUser.uid+"/mensajes/"+this.ChatId).set("viewed",'viewed');
       this.message=[];
       for(var key in data){
         if(key!='nombre' && key!='viewed'){
