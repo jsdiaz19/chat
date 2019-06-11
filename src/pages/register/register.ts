@@ -5,7 +5,6 @@ import { LoginPage } from '../login/login';
 import {RegisterProvider} from '../../providers/register/register';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FormGroup, Validators,FormControl } from '@angular/forms';
-import { Vibration } from '@ionic-native/vibration/ngx';
 import {DataProvider} from '../../providers/data/data';
 /**
  * Generated class for the RegisterPage page.
@@ -40,7 +39,6 @@ export class RegisterPage {
     public auth :  RegisterProvider,
     public alertCtrl : AlertController,
     private afDB: AngularFireDatabase,
-    private vibration: Vibration,
     private platform: Platform,
     private data: DataProvider
     ) {

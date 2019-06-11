@@ -8,7 +8,6 @@ import { ProfilePage } from '../profile/profile';
 import {AddFriendPage} from '../add-friend/add-friend'
 import {DataProvider} from '../../providers/data/data';
 import * as firebase from 'firebase';
-import { Vibration } from '@ionic-native/vibration/ngx';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { ChatdbPage} from '../chatdb/chatdb';
 @Component({

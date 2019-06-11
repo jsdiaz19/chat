@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
 import {DataProvider} from '../../providers/data/data';
+import { Vibration } from '@ionic-native/vibration';
 /**
  * Generated class for the ChatdbPage page.
  *
@@ -360,11 +361,13 @@ export class ChatdbPage {
     }
 };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private afDB: AngularFireDatabase, private data: DataProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private afDB: AngularFireDatabase, private data: DataProvider, private vibration: Vibration) {
     this.ChatId= this.navParams.get('uid');
     this.afDB.list("/usuarios/"+firebase.auth().currentUser.uid+"/mensajes/"+this.ChatId).set("viewed",'viewed');
     this.name= this.navParams.get('nombre');
     this.getChat();
+    
+
   }
 
   ionViewDidLoad() {
@@ -471,20 +474,35 @@ Traducir(code){
     return message;
   }
 
-VibrateMessage(message){
-    console.log('ggg',message.menssaje);
+vibrateDot(){
+    return new Promise(resolve=>
+        setTimeout(()=> {
+            this.vibration.vibrate([500,1000,0]);
+            resolve(5);
+        },1500)
+    )
+}
 
-    var string: String = message["menssaje"]
+vibrateDash(){
+    return new Promise(resolve=>
+        setTimeout(()=> {
+            this.vibration.vibrate([700,1000,0]);
+            resolve(5);
+        },1700)
+    )
+}
 
-    for (var i in string){
-        if(string[i] == '.'){
-            navigator.vibrate([250]);
+async VibrateMessage(message,index){
+    for ( var i in message){
+        alert(this.navCtrl.getActive().name)
+        if( message[i]=="."){
+            var temp = await this.vibrateDot()
         }
-        else if(string[i] == '-'){
-            navigator.vibrate([500]);
-        }
+        else if( message[i]=="-"){
+            var temp = await this.vibrateDash()
+        }       
+        
     }
-    
 }
 
 getChat(){
@@ -498,12 +516,11 @@ getChat(){
           this.mensajes.push({menssaje: this.Traducir(data[key]['message']), type: data[key]['type']} );
         }
       }
-      console.log(this.mensajes[0]);
-      this.VibrateMessage(this.mensajes[0]);
     })
   }
 
   SendMessage(mensaje){
+    navigator.vibrate([5000]);
     var current= this.data.CurrentUser();
     this.afDB.list("/usuarios/"+current.uid +"/mensajes/"+this.ChatId).push({type: 'incoming', message: mensaje});
     this.afDB.list("/usuarios/"+this.ChatId +"/mensajes/"+current.uid).push({type: 'outcoming', message:mensaje});

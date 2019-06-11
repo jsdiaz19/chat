@@ -21,7 +21,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Vibration } from '@ionic-native/vibration/ngx';
+import { Vibration } from '@ionic-native/vibration';
 import { RegisterProvider } from '../providers/register/register';
 import { LoginProvider } from '../providers/login/login';
 import { DataProvider } from '../providers/data/data';
