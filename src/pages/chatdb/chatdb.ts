@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
 import {DataProvider} from '../../providers/data/data';
-import { Vibration } from '@ionic-native/vibration';
+import {VibrationProvider} from '../../providers/vibration/vibration'
+import { MorseProvider} from '../../providers/morse/morse'
 /**
  * Generated class for the ChatdbPage page.
  *
@@ -19,6 +20,7 @@ import { Vibration } from '@ionic-native/vibration';
 export class ChatdbPage {
   message: string="";
   mensajes;
+  currentMessage: number = -1;
   ChatId: string;
   name: string;
   keyDownDate = null;
@@ -26,342 +28,13 @@ export class ChatdbPage {
   keyPressDuration = null;
   spaceDuration = 500;
   
-  _ALPHABET_={
-    "A": ".-",
-    "B": "-...",
-    "C": "-.-.",
-    "D": "-..",
-    "E": ".",
-    "F": "..-.",
-    "G":  "--.",
-    "H": "....",
-    "I": "..",
-    "J": ".---",
-    "K": "-.-",
-    "L": ".-..",
-    "M": "--",
-    "N": "-.",
-    "O": "---",
-    "P": ".--.",
-    "Q": "--.-",
-    "R": ".-.",
-    "S": "...",
-    "T": "-",
-    "U": "..-",
-    "V": "...-",
-    "W": ".--",
-    "X": "-..-",
-    "Y": "-.--",
-    "Z": "--..",
-    "1": ".----",
-    "2": "..---",
-    "3": "...--",
-    "4": "....--",
-    "5": ".....",
-    "6": "-....",
-    "7": "--...",
-    "8": "---..",
-    "9": "----.",
-    "0": "-----",
-    "?": "..--..",
-    "_": "..--.-",
-    "\"": ".-..-.",
-    "+": ".-.-.",
-    ".": ".-.-.-",
-    "@": ".--.-.",
-    "-": "-....-",
-    "=": "-...-",
-    "/": "-..-.",
-    "\u0020": "-.-.-",
-    "!": "-.-.--",
-    "()": "-.--.-",
-    ",": "--..--",
-    "Ñ": "--.--",
-    "Ö": "---.",
-    ":": "---...",
-    "CH": "----",
-    "'": ".----.",
-    ";": "-.-.-."
-  }
-  _MORSE_CODE_ = {
-    "data": "",
-    "left": {
-        "data": "E",
-        "left": {
-            "data": "I",
-            "left": {
-                "data": "S",
-                "left": {
-                    "data": "H",
-                    "left": {
-                        "data": "5",
-                        "left": null,
-                        "rigth": null
-                    },
-                    "rigth": {
-                        "data": "4",
-                        "left": null,
-                        "rigth": null
-                    }
-                },
-                "rigth": {
-                    "data": "V",
-                    "left": {
-                        "data": "Ŝ",
-                        "left": null,
-                        "rigth": null
-                    },
-                    "rigth": {
-                        "data": "3",
-                        "left": null,
-                        "rigth": null
-                    }
-                }
-            },
-            "rigth": {
-                "data": "U",
-                "left": {
-                    "data": "F",
-                    "left": {
-                        "data": "É",
-                        "left": null,
-                        "rigth": null
-                    },
-                    "rigth": null
-                },
-                "rigth": {
-                    "data": "Ü",
-                    "left": {
-                        "data": "Đ",
-                        "left": {
-                            "data": "?",
-                            "left": null,
-                            "rigth": null
-                        },
-                        "rigth": {
-                            "data": "_",
-                            "left": null,
-                            "rigth": null
-                        }
-                    },
-                    "rigth": {
-                        "data": "2",
-                        "left": null,
-                        "rigth": null
-                    }
-                }
-            }
-        },
-        "rigth": {
-            "data": "A",
-            "left": {
-                "data": "R",
-                "left": {
-                    "data": "L",
-                    "left": null,
-                    "rigth": {
-                        "data": "È",
-                        "left": {
-                            "data": "\"",
-                            "left": null,
-                            "rigth": null
-                        },
-                        "rigth": null
-                    }
-                },
-                "rigth": {
-                    "data": "Ä",
-                    "left": {
-                        "data": "+",
-                        "left": null,
-                        "rigth": {
-                            "data": ".",
-                            "left": null,
-                            "rigth": null
-                        }
-                    },
-                    "rigth": null
-                }
-            },
-            "rigth": {
-                "data": "W",
-                "left": {
-                    "data": "P",
-                    "left": {
-                        "data": "Þ",
-                        "left": null,
-                        "rigth": null
-                    },
-                    "rigth": {
-                        "data": "À",
-                        "left": {
-                            "data": "@",
-                            "left": null,
-                            "rigth": null
-                        },
-                        "rigth": null
-                    }
-                },
-                "rigth": {
-                    "data": "J",
-                    "left": {
-                        "data": "Ĵ",
-                        "left": null,
-                        "rigth": null
-                    },
-                    "rigth": {
-                        "data": "1",
-                        "left": {
-                            "data": "'",
-                            "left": null,
-                            "rigth": null
-                        },
-                        "rigth": null
-                    }
-                }
-            }
-        }
-    },
-    "rigth": {
-        "data": "T",
-        "left": {
-            "data": "N",
-            "left": {
-                "data": "D",
-                "left": {
-                    "data": "B",
-                    "left": {
-                        "data": "6",
-                        "left": null,
-                        "rigth": {
-                            "data": "-",
-                            "left": null,
-                            "rigth": null
-                        }
-                    },
-                    "rigth": {
-                        "data": "=",
-                        "left": null,
-                        "rigth": null
-                    }
-                },
-                "rigth": {
-                    "data": "X",
-                    "left": {
-                        "data": "/",
-                        "left": null,
-                        "rigth": null
-                    },
-                    "rigth": null
-                }
-            },
-            "rigth": {
-                "data": "K",
-                "left": {
-                    "data": "C",
-                    "left": {
-                        "data": "Ç",
-                        "left": null,
-                        "rigth": null
-                    },
-                    "rigth": {
-                        "data": "\u0020",
-                        "left": {
-                            "data": ";",
-                            "left": null,
-                            "rigth": null
-                        },
-                        "rigth": {
-                            "data": "!",
-                            "left": null,
-                            "rigth": null
-                        }
-                    }
-                },
-                "rigth": {
-                    "data": "Y",
-                    "left": {
-                        "data": "Ĥ",
-                        "left": null,
-                        "rigth": {
-                            "data": "()",
-                            "left": null,
-                            "rigth": null
-                        }
-                    },
-                    "rigth": null
-                }
-            }
-        },
-        "rigth": {
-            "data": "M",
-            "left": {
-                "data": "G",
-                "left": {
-                    "data": "Z",
-                    "left": {
-                        "data": "7",
-                        "left": null,
-                        "rigth": null
-                    },
-                    "rigth": {
-                        "data": "",
-                        "left": null,
-                        "rigth": {
-                            "data": ",",
-                            "left": null,
-                            "rigth": null
-                        }
-                    }
-                },
-                "rigth": {
-                    "data": "Q",
-                    "left": {
-                        "data": "Ĝ",
-                        "left": null,
-                        "rigth": null
-                    },
-                    "rigth": {
-                        "data": "Ñ",
-                        "left": null,
-                        "rigth": null
-                    }
-                }
-            },
-            "rigth": {
-                "data": "O",
-                "left": {
-                    "data": "Ö",
-                    "left": {
-                        "data": "8",
-                        "left": {
-                            "data": ":",
-                            "left": null,
-                            "rigth": null
-                        },
-                        "rigth": null
-                    },
-                    "rigth": null
-                },
-                "rigth": {
-                    "data": "CH",
-                    "left": {
-                        "data": "9",
-                        "left": null,
-                        "rigth": null
-                    },
-                    "rigth": {
-                        "data": "0",
-                        "left": null,
-                        "rigth": null
-                    }
-                }
-            }
-        }
-    }
-};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private afDB: AngularFireDatabase, private data: DataProvider, private vibration: Vibration) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private afDB: AngularFireDatabase, 
+    private data: DataProvider, 
+    private vibration: VibrationProvider,
+    private morse: MorseProvider) {
     this.ChatId= this.navParams.get('uid');
     this.afDB.list("/usuarios/"+firebase.auth().currentUser.uid+"/mensajes/"+this.ChatId).set("viewed",'viewed');
     this.name= this.navParams.get('nombre');
@@ -374,7 +47,8 @@ export class ChatdbPage {
     console.log('ionViewDidLoad ChatdbPage');
   }
   
-  
+
+
   Start = new Promise(function(resolve, reject) {
     var d = new Date();
     resolve(d.getTime());
@@ -433,77 +107,11 @@ export class ChatdbPage {
   }
 
   Morse(){
-    var message = "";
-    var mmCopy = [];
-    if(this.message){
-      mmCopy = this.message.split(/\||\n|\s/g);
-      for (var x = 0; x < mmCopy.length; x++) {
-        if (mmCopy[x] !== ""){
-          var input = mmCopy[x].split("");
-          var temp= this._MORSE_CODE_;
-          for (var i = 0; i < input.length; i++) {
-            if( input[i] === "."){
-              temp= temp.left;
-            }
-            else if( input[i] == '-'){
-              temp= temp.rigth;
-            }
-
-            else if(input[i]=="/"){
-                message+=" ";
-            }
-          }
-          message+=temp.data;
-        }
-      }
-      this.message="";
+      var mess = this.morse.Morse(this.message)
       document.getElementById('message').textContent=" ";
-      this.SendMessage(message);
-    }
-}
-
-Traducir(code){
-    var message = "";
-    var inputMessage = code.split("").map(function(key){
-      return key.toUpperCase();
-    });
-    for(var i=0;i<inputMessage.length;i++){
-      var key = inputMessage[i];
-      message+= this._ALPHABET_[key]+"\u0020";
-    }
-    return message;
+      this.SendMessage(mess);
   }
 
-vibrateDot(){
-    return new Promise(resolve=>
-        setTimeout(()=> {
-            this.vibration.vibrate([500,1000,0]);
-            resolve(5);
-        },1500)
-    )
-}
-
-vibrateDash(){
-    return new Promise(resolve=>
-        setTimeout(()=> {
-            this.vibration.vibrate([700,1000,0]);
-            resolve(5);
-        },1700)
-    )
-}
-
-async VibrateMessage(message,index){
-    for ( var i in message){
-        alert(this.navCtrl.getActive().name)
-        if( message[i]=="."){
-            var temp = await this.vibrateDot()
-        }
-        else if( message[i]=="-"){
-            var temp = await this.vibrateDash()
-        }       
-        
-    }
-}
 
 getChat(){
     var messageRef= firebase.database().ref("/usuarios/"+ firebase.auth().currentUser.uid+"/mensajes/"+this.ChatId);
@@ -513,7 +121,7 @@ getChat(){
       this.mensajes=[];
       for(var key in data){
         if(key!='nombre' && key!='viewed'){
-          this.mensajes.push({menssaje: this.Traducir(data[key]['message']), type: data[key]['type']} );
+          this.mensajes.push({menssaje: this.morse.Traducir(data[key]['message']), type: data[key]['type'], isSelect: false} );
         }
       }
     })
@@ -527,4 +135,29 @@ getChat(){
     this.afDB.list("/usuarios/"+this.ChatId+"/mensajes/"+current.uid).set("viewed","not-viewed");
   }
 
+  UpMessage(){
+    if( this.currentMessage ==-1){
+      this.vibration.stopVibrate();
+      this.currentMessage +=this.mensajes.length;
+      this.mensajes[this.currentMessage].isSelect=true;
+      this.vibration.VibrateMessage(this.mensajes[this.currentMessage].menssaje);
+    }
+    else if( this.currentMessage>=1){
+      this.vibration.stopVibrate();
+      this.currentMessage-=1;
+      this.mensajes[this.currentMessage].isSelect=true;
+      this.mensajes[this.currentMessage+1].isSelect=false;
+      this.vibration.VibrateMessage(this.mensajes[this.currentMessage].menssaje);
+    }
+  }
+
+  DownMessage(){
+    if( this.currentMessage>=0 && this.currentMessage<this.mensajes.length-1){
+      this.vibration.stopVibrate();
+      this.currentMessage+=1;
+      this.mensajes[this.currentMessage].isSelect=true;
+      this.mensajes[this.currentMessage-1].isSelect=false;
+      this.vibration.VibrateMessage(this.mensajes[this.currentMessage].menssaje);
+    }
+  }
 }

@@ -31,6 +31,8 @@ import {AddFriendPage} from '../pages/add-friend/add-friend';
 import { AvatarModule } from 'ngx-avatar';
 import { IonTextAvatar } from 'ionic-text-avatar';
 import { Toast } from '@ionic-native/toast/ngx';
+import { MorseProvider } from '../providers/morse/morse';
+import { VibrationProvider } from '../providers/vibration/vibration';
 export const firebaseConfig = {
   apiKey: "AIzaSyCEN16Yevh_zCkq2nREpB7aJGgRA-tIQEE",
   authDomain: "tesis-69389.firebaseapp.com",
@@ -90,6 +92,8 @@ export const firebaseConfig = {
     DataProvider,
     Toast,
     ChangePasswordProvider,
+    MorseProvider,
+    VibrationProvider,
   ]
 })
 export class AppModule {}

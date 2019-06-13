@@ -16,6 +16,7 @@ import { ChatdbPage} from '../chatdb/chatdb';
 })
 export class HomePage {
   temparr = [];
+  numChat: number= -1;
   filter = [];
   message;
   search: string ='';
@@ -60,7 +61,7 @@ export class HomePage {
       var data= snap.val();
       this.message=[];
       for( var key in data){
-        this.message.push({ nombre: data[key]['nombre'], notification: data[key]['viewed'], uid: key});
+        this.message.push({ nombre: data[key]['nombre'], notification: data[key]['viewed'], uid: key, isSelect: false});
       }
       this.filter= this.message.sort(function(a,b){
         if(a.notification=='not-viewed' && b.notification=='viewed'){
@@ -100,6 +101,29 @@ export class HomePage {
     })
   }
 
+  DownList(){
+    if( this.numChat==-1){
+      this.numChat+=1;
+      this.filter[this.numChat].isSelect=true;
+    }
+    else if( this.numChat<this.filter.length-1){
+      this.numChat+=1;
+      this.filter[this.numChat].isSelect=true;
+      this.filter[this.numChat-1].isSelect=false;
+    }
+  }
+
+  UpList(){
+    if( this.numChat>=1 && this.numChat<this.filter.length){
+      this.numChat-=1;
+      this.filter[this.numChat].isSelect=true;
+      this.filter[this.numChat+1].isSelect=false;
+    }
+  }
+
+  Enter(){
+    this.goToChat(this.filter[this.numChat].uid,this.filter[this.numChat].nombre);
+  }
 
 }
 

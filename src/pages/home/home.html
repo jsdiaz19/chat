@@ -18,19 +18,45 @@
 
 
 
-<ion-content #list padding cache-view="false">
+<ion-content>
+    
+  <ion-fab left bottom>
+    <button  (click)="UpList()" ion-fab>
+      <ion-icon name="arrow-up" style="zoom:2.0"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-fab center bottom>
+      <button (click)="Enter()" ion-fab>
+        <ion-icon name="play" ></ion-icon>
+      </button>
+    </ion-fab>
+
+  <ion-fab right bottom>
+      <button (click)="DownList()" ion-fab>
+        <ion-icon name="arrow-down"  style="zoom:2.0"></ion-icon>
+      </button>
+    </ion-fab>
+
   <div class="spaceBar">
     <ion-searchbar [(ngModel)]="search" (ionInput)="setFilteredItems()" placeholder="Busca en tus contactos" ></ion-searchbar> 
   </div> 
   <ion-list>
 
-    <ion-item class="message" (click)="goToChat(mensaje.uid,mensaje.nombre)" *ngFor= "let mensaje of filter" lines="inset">
+    <ion-item class="msg" (click)="goToChat(mensaje.uid,mensaje.nombre)" *ngFor= "let mensaje of filter" lines="inset"  [ngStyle]="{ background: mensaje.isSelect ? '#e1dddc': 'white'}">
       <ion-avatar item-start>
-        <ion-text-avatar>F</ion-text-avatar>
+        <ngx-avatar name="{{mensaje.nombre}}" bgColor="#488aff"></ngx-avatar>
       </ion-avatar>
-      <h2> {{mensaje.nombre}}</h2>
+      <h2 style="text-transform: capitalize"> <b>{{mensaje.nombre}} </b></h2>
       <p style="padding-right:0">mensajes nuevos</p>
       <ion-badge color="danger" *ngIf="mensaje.notification=='not-viewed'" item-end>+1</ion-badge> 
+    </ion-item>
+  </ion-list>
+
+
+
+
+</ion-content>
 
       <!-- <div class="msg-detail">
         <div class="msg-info">
@@ -41,12 +67,4 @@
           <ion-icon name="md-mail" *ngIf="mensaje.notification=='not-viewed'" ></ion-icon>
         </div>
       </div> -->
-    </ion-item>
-  </ion-list>
-
-      
-
-</ion-content>
-
-
 

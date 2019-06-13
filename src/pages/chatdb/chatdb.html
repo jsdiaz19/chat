@@ -5,9 +5,19 @@
 </ion-header>
 
 <ion-content>
+  <div class="touch">
+    <ion-grid class="grid">
+      <ion-row >
+        <ion-col class="touchUp" (click)="UpMessage()"> 
+        </ion-col>
+        <ion-col class="touchDown" (click)="DownMessage()">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
   <ion-list>
     <ion-item no-lines>
-      <div class="message" *ngFor="let mensaje of mensajes" [ngClass]="mensaje.type">
+      <div class="message" *ngFor="let mensaje of mensajes" [ngClass]="mensaje.type" [ngStyle]="{ background: mensaje.isSelect ? '#e1dddc': 'white'}">
         <p>{{mensaje.menssaje}}</p>
       </div>
       
