@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import {LoginPage} from '../pages/login/login';
 import {DataProvider} from '../providers/data/data';
 import * as firebase from 'firebase';
+import { async } from 'rxjs/internal/scheduler/async';
 @Component({
   templateUrl: 'app.html'
 })
@@ -14,11 +15,10 @@ export class MyApp {
   rootPage;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private auth: DataProvider) {
     this.auth.Session.subscribe(session=>{
-      if(session!=null && session){
-        if(this.auth.CurrentUser()== undefined){
-          this.auth.SetUser(firebase.auth().currentUser.uid);
-        } 
-        this.rootPage = HomePage; 
+      if(session!=null){
+        this.auth.SetUser(firebase.auth().currentUser.uid).then(res=>{
+          this.rootPage = HomePage; 
+        })
       }
       else{ 
         this.rootPage = LoginPage; 

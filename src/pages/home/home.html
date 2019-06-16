@@ -19,24 +19,25 @@
 
 
 <ion-content>
-    
-  <ion-fab left bottom>
-    <button  (click)="UpList()" ion-fab>
-      <ion-icon name="arrow-up" style="zoom:2.0"></ion-icon>
-    </button>
-  </ion-fab>
+  <div *ngIf="user.discapacidad!=='Ninguna'">    
+    <ion-fab left bottom>
+      <button  (click)="UpList()" ion-fab>
+        <ion-icon name="arrow-up" style="zoom:2.0"></ion-icon>
+      </button>
+    </ion-fab>
 
-  <ion-fab center bottom>
+    <ion-fab center bottom>
       <button (click)="Enter()" ion-fab>
         <ion-icon name="play" ></ion-icon>
       </button>
     </ion-fab>
 
-  <ion-fab right bottom>
+    <ion-fab right bottom>
       <button (click)="DownList()" ion-fab>
         <ion-icon name="arrow-down"  style="zoom:2.0"></ion-icon>
       </button>
     </ion-fab>
+  </div>
 
   <div class="spaceBar">
     <ion-searchbar [(ngModel)]="search" (ionInput)="setFilteredItems()" placeholder="Busca en tus contactos" ></ion-searchbar> 

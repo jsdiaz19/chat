@@ -2,7 +2,6 @@ import { Component} from '@angular/core';
 import { NgZone  } from '@angular/core';
 import { Events } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
-import { LoginPage } from '../login/login';
 import { ChatPage } from '../Chats/chat/chat';
 import { ProfilePage } from '../profile/profile';
 import {AddFriendPage} from '../add-friend/add-friend'
@@ -10,6 +9,8 @@ import {DataProvider} from '../../providers/data/data';
 import * as firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { ChatdbPage} from '../chatdb/chatdb';
+import {VibrationProvider} from '../../providers/vibration/vibration';
+import {MorseProvider} from '../../providers/morse/morse'
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -21,19 +22,19 @@ export class HomePage {
   message;
   search: string ='';
   myrequests;
-  constructor(public navCtrl: NavController, private auth: DataProvider,public events: Events,private zone: NgZone,private afDB: AngularFireDatabase) {
+  user: any;
+  constructor(public navCtrl: NavController, private auth: DataProvider,public events: Events,private zone: NgZone,private afDB: AngularFireDatabase,private vibration: VibrationProvider, private traslate: MorseProvider) {
     this.GetMessage();
+    this.user= this.auth.CurrentUser();
     this.afDB.list("/usuarios/"+ firebase.auth().currentUser.uid+"/mensajes").valueChanges().subscribe( res=>{
       this.zone.run(() => {
         this.GetMessage();
       });
-  });
+    });
+
+
   }
   
-
- 
- 
-
   ngOnChanges(){
     this.GetMessage();
   }
@@ -105,19 +106,27 @@ export class HomePage {
     if( this.numChat==-1){
       this.numChat+=1;
       this.filter[this.numChat].isSelect=true;
+      this.vibration.beginVibrate();
+      this.vibration.VibrateMessage(this.traslate.Traducir(this.filter[this.numChat].nombre)) ;
     }
     else if( this.numChat<this.filter.length-1){
+      this.vibration.stopVibrate();
       this.numChat+=1;
       this.filter[this.numChat].isSelect=true;
       this.filter[this.numChat-1].isSelect=false;
+      this.vibration.beginVibrate();
+      this.vibration.VibrateMessage(this.traslate.Traducir(this.filter[this.numChat].nombre));
     }
   }
 
   UpList(){
     if( this.numChat>=1 && this.numChat<this.filter.length){
+      this.vibration.stopVibrate();
       this.numChat-=1;
       this.filter[this.numChat].isSelect=true;
       this.filter[this.numChat+1].isSelect=false;
+      this.vibration.beginVibrate();
+      this.vibration.VibrateMessage(this.traslate.Traducir(this.filter[this.numChat].nombre));
     }
   }
 

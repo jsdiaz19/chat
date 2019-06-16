@@ -27,12 +27,16 @@ export class DataProvider {
 
   SetUser(uid){
     let receivedUser:any;
-    this.afDB.object('usuarios/'+uid+"/info/").valueChanges().subscribe(user=>{
-      receivedUser=user;
-      this.User=receivedUser;
-      this.User.uid=uid;
+    return new Promise( resolve =>{
+      this.afDB.object('usuarios/'+uid+"/info/").valueChanges().subscribe(user=>{
+        receivedUser=user;
+        this.User=receivedUser;
+        this.User.uid=uid;
+        resolve(this.User);
+      });
     })
     
+   
   }
   
 

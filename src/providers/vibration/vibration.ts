@@ -11,7 +11,7 @@ import { Vibration } from '@ionic-native/vibration';
 */
 @Injectable()
 export class VibrationProvider {
-
+  stop: boolean = false;
   constructor(public http: HttpClient, private vibration: Vibration) {
     console.log('Hello VibrationProvider Provider');
   }
@@ -19,8 +19,10 @@ export class VibrationProvider {
   vibrateDot(){
     return new Promise(resolve=>
         setTimeout(()=> {
-            this.vibration.vibrate([500,1000,0]);
-            resolve(5);
+          if(!this.stop){ 
+            this.vibration.vibrate([500,1000,0]); 
+          }
+          resolve(5);
         },1500)
     )
   }
@@ -28,25 +30,34 @@ export class VibrationProvider {
   vibrateDash(){
     return new Promise(resolve=>
         setTimeout(()=> {
-            this.vibration.vibrate([700,1000,0]);
-            resolve(5);
+          if(!this.stop){
+            this.vibration.vibrate([700,1000,0]); 
+          }     
+          resolve(5);
         },1700)
     )
   }
 
   async VibrateMessage(message){
-    for ( var i in message){
-      if( message[i]=="."){
-        var temp = await this.vibrateDot()
+    var i = 0;
+    do {
+      if(message[i]=="."){
+        await this.vibrateDot();
       }
-      else if( message[i]=="-"){
-        var temp = await this.vibrateDash()
-      }         
-    }
+      else if(message[i]=="-"){
+        await this.vibrateDash()
+      }
+      i+=1;
+   } while (!this.stop && i<message.length);
   }
 
+  
   stopVibrate(){
-    this.vibration.vibrate(0);
+    this.stop=true;
+  }
+
+  beginVibrate(){
+    this.stop=false;
   }
 
 }

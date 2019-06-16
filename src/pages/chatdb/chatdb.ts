@@ -29,12 +29,7 @@ export class ChatdbPage {
   spaceDuration = 500;
   
 
-  constructor(public navCtrl: NavController, 
-    public navParams: NavParams, 
-    private afDB: AngularFireDatabase, 
-    private data: DataProvider, 
-    private vibration: VibrationProvider,
-    private morse: MorseProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private afDB: AngularFireDatabase, private data: DataProvider, private vibration: VibrationProvider,private morse: MorseProvider) {
     this.ChatId= this.navParams.get('uid');
     this.afDB.list("/usuarios/"+firebase.auth().currentUser.uid+"/mensajes/"+this.ChatId).set("viewed",'viewed');
     this.name= this.navParams.get('nombre');
@@ -85,10 +80,8 @@ export class ChatdbPage {
     } else {
         this.SpaceWord();
     }
-
     this.keyDownDate = null;
     this.keyUpDate = null;
-
   }
 
   SpaceLetter(){
@@ -137,9 +130,9 @@ getChat(){
 
   UpMessage(){
     if( this.currentMessage ==-1){
-      this.vibration.stopVibrate();
       this.currentMessage +=this.mensajes.length;
       this.mensajes[this.currentMessage].isSelect=true;
+      this.vibration.beginVibrate();
       this.vibration.VibrateMessage(this.mensajes[this.currentMessage].menssaje);
     }
     else if( this.currentMessage>=1){
@@ -147,6 +140,7 @@ getChat(){
       this.currentMessage-=1;
       this.mensajes[this.currentMessage].isSelect=true;
       this.mensajes[this.currentMessage+1].isSelect=false;
+      this.vibration.beginVibrate();
       this.vibration.VibrateMessage(this.mensajes[this.currentMessage].menssaje);
     }
   }
@@ -157,6 +151,7 @@ getChat(){
       this.currentMessage+=1;
       this.mensajes[this.currentMessage].isSelect=true;
       this.mensajes[this.currentMessage-1].isSelect=false;
+      this.vibration.beginVibrate();
       this.vibration.VibrateMessage(this.mensajes[this.currentMessage].menssaje);
     }
   }
