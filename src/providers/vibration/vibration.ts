@@ -16,6 +16,9 @@ export class VibrationProvider {
     console.log('Hello VibrationProvider Provider');
   }
 
+  /**
+   * this function vibrates for a specific time according to a dot in morse code
+   */
   vibrateDot(){
     return new Promise(resolve=>
         setTimeout(()=> {
@@ -26,6 +29,10 @@ export class VibrationProvider {
         },1500)
     )
   }
+
+  /**
+   * this function vibrates for a specific time according to a dash in morse code
+   */
 
   vibrateDash(){
     return new Promise(resolve=>
@@ -38,6 +45,10 @@ export class VibrationProvider {
     )
   }
 
+  /**
+   * this function translates a message in morse code to vibrations
+   * @param message is the message in morse code
+   */
   async VibrateMessage(message){
     var i = 0;
     do {
@@ -51,11 +62,16 @@ export class VibrationProvider {
    } while (!this.stop && i<message.length);
   }
 
-  
+  /**
+   * this function stops the vibrations
+   */
   stopVibrate(){
     this.stop=true;
   }
 
+  /**
+   * this function start the vibrations
+   */
   beginVibrate(){
     this.stop=false;
   }

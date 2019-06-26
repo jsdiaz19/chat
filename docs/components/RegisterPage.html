@@ -1,0 +1,1120 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>chatSC documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">chatSC documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>RegisterPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/pages/register/register.ts</code>
+</p>
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>page-register</code></td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>register.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#alertCtrl">alertCtrl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#auth">auth</a>
+                            </li>
+                            <li>
+                                <a href="#Form">Form</a>
+                            </li>
+                            <li>
+                                <a href="#myPhoto">myPhoto</a>
+                            </li>
+                            <li>
+                                <a href="#myPhotosRef">myPhotosRef</a>
+                            </li>
+                            <li>
+                                <a href="#myPhotoURL">myPhotoURL</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#navCtrl">navCtrl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#navParams">navParams</a>
+                            </li>
+                            <li>
+                                <a href="#notification">notification</a>
+                            </li>
+                            <li>
+                                <a href="#usr">usr</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#goToBack">goToBack</a>
+                            </li>
+                            <li>
+                                <a href="#goToHome">goToHome</a>
+                            </li>
+                            <li>
+                                <a href="#Register">Register</a>
+                            </li>
+                            <li>
+                                <a href="#ShowToast">ShowToast</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(navCtrl: NavController, navParams: NavParams, auth: <a href="../injectables/RegisterProvider.html">RegisterProvider</a>, alertCtrl: AlertController, afDB: AngularFireDatabase, platform: Platform, data: <a href="../injectables/DataProvider.html">DataProvider</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/pages/register/register.ts:37</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>navCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>NavController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>navParams</td>
+                                                  
+                                                        <td>
+                                                                    <code>NavParams</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RegisterProvider.html" target="_self" >RegisterProvider</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>alertCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>AlertController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>afDB</td>
+                                                  
+                                                        <td>
+                                                                    <code>AngularFireDatabase</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>platform</td>
+                                                  
+                                                        <td>
+                                                                    <code>Platform</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>data</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/DataProvider.html" target="_self" >DataProvider</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToBack"></a>
+                    <span class="name">
+                        <b>
+                            goToBack
+                        </b>
+                        <a href="#goToBack"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToBack()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="65"
+                            class="link-to-prism">src/pages/register/register.ts:65</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>this function redirect login page</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goToHome"></a>
+                    <span class="name">
+                        <b>
+                            goToHome
+                        </b>
+                        <a href="#goToHome"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goToHome()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="57"
+                            class="link-to-prism">src/pages/register/register.ts:57</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>this function redirect Home page</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Register"></a>
+                    <span class="name">
+                        <b>
+                            Register
+                        </b>
+                        <a href="#Register"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>Register()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="84"
+                            class="link-to-prism">src/pages/register/register.ts:84</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>this function registers a new user</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ShowToast"></a>
+                    <span class="name">
+                        <b>
+                            ShowToast
+                        </b>
+                        <a href="#ShowToast"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ShowToast(message)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">src/pages/register/register.ts:74</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>this function show messages type Toast</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>message</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>is the message to show</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="alertCtrl"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            alertCtrl</b>
+                            <a href="#alertCtrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>AlertController</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/pages/register/register.ts:42</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="auth"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            auth</b>
+                            <a href="#auth"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../injectables/RegisterProvider.html" target="_self" >RegisterProvider</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/pages/register/register.ts:41</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="Form"></a>
+                        <span class="name">
+                            <b>
+                            Form</b>
+                            <a href="#Form"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new FormGroup({
+    Nom: new FormControl(&#x27;&#x27;,Validators.required),
+    Email: new FormControl(&#x27;&#x27;,Validators.required),
+    tel: new FormControl(&#x27;&#x27;,Validators.required),
+    password: new FormControl(&#x27;&#x27;,Validators.required),
+    confirmed: new FormControl(&#x27;&#x27;,Validators.required),
+    type: new FormControl(&#x27;&#x27;,Validators.required),
+    Sex: new FormControl(&#x27;&#x27;,Validators.required),
+  })</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/pages/register/register.ts:29</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="myPhoto"></a>
+                        <span class="name">
+                            <b>
+                            myPhoto</b>
+                            <a href="#myPhoto"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/pages/register/register.ts:26</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="myPhotosRef"></a>
+                        <span class="name">
+                            <b>
+                            myPhotosRef</b>
+                            <a href="#myPhotosRef"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/pages/register/register.ts:27</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="myPhotoURL"></a>
+                        <span class="name">
+                            <b>
+                            myPhotoURL</b>
+                            <a href="#myPhotoURL"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/pages/register/register.ts:28</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="navCtrl"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            navCtrl</b>
+                            <a href="#navCtrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>NavController</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/pages/register/register.ts:39</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="navParams"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            navParams</b>
+                            <a href="#navParams"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>NavParams</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/pages/register/register.ts:40</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="notification"></a>
+                        <span class="name">
+                            <b>
+                            notification</b>
+                            <a href="#notification"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/pages/register/register.ts:24</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="usr"></a>
+                        <span class="name">
+                            <b>
+                            usr</b>
+                            <a href="#usr"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/pages/register/register.ts:25</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { IonicPage, NavController, NavParams,AlertController,Platform } from &#x27;ionic-angular&#x27;;
+import { HomePage } from &#x27;../home/home&#x27;;
+import { LoginPage } from &#x27;../login/login&#x27;;
+import {RegisterProvider} from &#x27;../../providers/register/register&#x27;;
+import { AngularFireDatabase } from &#x27;angularfire2/database&#x27;;
+import { FormGroup, Validators,FormControl } from &#x27;@angular/forms&#x27;;
+import {DataProvider} from &#x27;../../providers/data/data&#x27;;
+
+/**
+ * Generated class for the RegisterPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+
+declare var window: any;
+@IonicPage()
+@Component({
+  selector: &#x27;page-register&#x27;,
+  templateUrl: &#x27;register.html&#x27;,
+})
+export class RegisterPage {
+  notification;
+  usr&#x3D;{};
+  myPhoto: any;
+  myPhotosRef: any;
+  myPhotoURL: any;
+  Form&#x3D; new FormGroup({
+    Nom: new FormControl(&#x27;&#x27;,Validators.required),
+    Email: new FormControl(&#x27;&#x27;,Validators.required),
+    tel: new FormControl(&#x27;&#x27;,Validators.required),
+    password: new FormControl(&#x27;&#x27;,Validators.required),
+    confirmed: new FormControl(&#x27;&#x27;,Validators.required),
+    type: new FormControl(&#x27;&#x27;,Validators.required),
+    Sex: new FormControl(&#x27;&#x27;,Validators.required),
+  });
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public auth :  RegisterProvider,
+    public alertCtrl : AlertController,
+    private afDB: AngularFireDatabase,
+    private platform: Platform,
+    private data: DataProvider
+    ) {
+      document.addEventListener(&quot;deviceready&quot;, onDeviceReady, false);
+      function onDeviceReady() {
+          console.log(navigator.vibrate);
+      }
+  }
+
+  /**
+   * this function redirect Home page
+   */
+  
+  goToHome(){
+    this.navCtrl.push(HomePage);
+  }
+  
+  /**
+   *  this function redirect login page
+   */
+
+  goToBack(){
+    this.navCtrl.push(LoginPage);
+  }
+
+  /**
+   * this function show messages type Toast
+   * @param message is the message to show
+   */
+
+  ShowToast(message){
+    this.platform.ready().then(()&#x3D;&gt;{
+      window.plugins.toast.show(message,&quot;short&quot;,&quot;bottom&quot;)
+    })
+  }
+
+  /**
+   *  this function registers a new user
+   */
+
+  Register(){
+    if(!this.Form.invalid &amp;&amp; this.Form.controls[&#x27;password&#x27;].value&#x3D;&#x3D;this.Form.controls[&#x27;confirmed&#x27;].value){
+      this.auth.registerUser(this.Form.controls[&#x27;Email&#x27;].value,this.Form.controls[&#x27;password&#x27;].value)
+      .then((user) &#x3D;&gt; {
+        this.afDB.list(&quot;/usuarios/&quot;+ user.user.uid).set(&quot;info&quot;,{nombre: this.Form.controls[&#x27;Nom&#x27;].value,tel: this.Form.controls[&#x27;tel&#x27;].value,password:this.Form.controls[&#x27;password&#x27;].value,correo:this.Form.controls[&#x27;Email&#x27;].value, discapacidad: this.Form.controls[&#x27;type&#x27;].value} );
+        //this.ShowToast(&#x27;Registro exitoso&#x27;);
+        this.navCtrl.push(LoginPage);
+      })
+      .catch(err&#x3D;&gt;{
+        let alert &#x3D; this.alertCtrl.create({
+          title: &#x27;Error&#x27;,
+          subTitle: err.message,
+          buttons: [&#x27;Aceptar&#x27;]
+        });
+        alert.present();
+      })
+    }
+    else{
+      if( this.Form.controls[&#x27;password&#x27;].value!&#x3D;this.Form.controls[&#x27;confirmed&#x27;].value){
+        //this.ShowToast(&#x27;Verifica la contraseña&#x27;)
+      }
+      else{
+        //this.ShowToast(&#x27;Hay campos incorrectamente diligenciado&#x27;);
+      }
+      navigator.vibrate([2000]);
+    }
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+--&gt;
+
+&lt;ion-content padding class&#x3D;&quot;Content&quot;&gt;
+  
+  &lt;div class&#x3D;&quot;Back&quot;&gt;
+    &lt;ion-icon class&#x3D;&quot;IconBack&quot; (click)&#x3D;&quot;goToBack()&quot; name&#x3D;&quot;arrow-round-back&quot;&gt;&lt;/ion-icon&gt;
+  &lt;/div&gt;
+  
+  &lt;div class&#x3D;&quot;Logo&quot;&gt;
+    &lt;img class&#x3D;&quot;img&quot; src&#x3D;&quot;assets/imgs/icon.png&quot;&gt;
+  &lt;/div&gt;
+  
+
+  &lt;ion-card class&#x3D;&quot;Card&quot;&gt;
+    &lt;ion-card-header class&#x3D;&quot;Header-Card&quot;&gt;
+      Nueva Cuenta
+    &lt;/ion-card-header&gt;
+    &lt;ion-card-content&gt;
+      &lt;form [formGroup]&#x3D;&quot;Form&quot;&gt; 
+        &lt;ion-item class&#x3D;&quot;LogDivItemName&quot;&gt;
+          &lt;ion-label class&#x3D;&quot;label&quot;&gt;&lt;ion-icon class&#x3D;&quot;Icon&quot; name&#x3D;&quot;contact&quot;&gt;&lt;/ion-icon&gt;&lt;/ion-label&gt;
+          &lt;ion-input type&#x3D;&quot;text&quot;  formControlName&#x3D;&quot;Nom&quot; placeholder&#x3D;&quot;Nombre Completo&quot;&gt;&lt;/ion-input&gt;
+          
+        &lt;/ion-item&gt;
+
+        &lt;ion-item class&#x3D;&quot;Error-message&quot;&gt;
+            &lt;p style&#x3D;&quot;color:red&quot; *ngIf&#x3D;&quot;this.Form.controls[&#x27;Nom&#x27;].hasError(&#x27;required&#x27;) &amp;&amp; (this.Form.controls[&#x27;Nom&#x27;].touched || this.Form.controls[&#x27;Nom&#x27;].dirty)&quot;&gt;Es  campo obligatorio&lt;/p&gt;
+        &lt;/ion-item&gt;        
+
+        &lt;ion-item class&#x3D;&quot;LogDivItemName&quot;&gt;
+          &lt;ion-label class&#x3D;&quot;label&quot;&gt;&lt;ion-icon class&#x3D;&quot;Icon&quot; name&#x3D;&quot;contact&quot;&gt;&lt;/ion-icon&gt;&lt;/ion-label&gt;
+          &lt;ion-input type&#x3D;&quot;email&quot; formControlName&#x3D;&quot;Email&quot; placeholder&#x3D;&quot;correo&quot;&gt;&lt;/ion-input&gt;
+        &lt;/ion-item&gt;
+
+        &lt;ion-item class&#x3D;&quot;Error-message&quot;&gt;
+          &lt;p style&#x3D;&quot;color:red&quot; *ngIf&#x3D;&quot;this.Form.controls[&#x27;Email&#x27;].hasError(&#x27;required&#x27;) &amp;&amp; (this.Form.controls[&#x27;Email&#x27;].touched || this.Form.controls[&#x27;Email&#x27;].dirty)&quot;&gt;Es un campo obligatorio&lt;/p&gt;
+        &lt;/ion-item&gt;
+
+        &lt;ion-item class&#x3D;&quot;LogDivItemNumber&quot;&gt;
+          &lt;ion-label class&#x3D;&quot;label&quot;&gt;&lt;ion-icon class&#x3D;&quot;Icon&quot; name&#x3D;&quot;phone-portrait&quot;&gt;&lt;/ion-icon&gt;&lt;/ion-label&gt;
+          &lt;ion-input type&#x3D;&quot;number&quot; formControlName&#x3D;&quot;tel&quot; placeholder&#x3D;&quot;Numero Celuar&quot;&gt;&lt;/ion-input&gt;
+        &lt;/ion-item&gt;
+        
+        &lt;ion-item class&#x3D;&quot;Error-message&quot;&gt;
+          &lt;p style&#x3D;&quot;color:red&quot; *ngIf&#x3D;&quot;this.Form.controls[&#x27;tel&#x27;].hasError(&#x27;required&#x27;) &amp;&amp; (this.Form.controls[&#x27;tel&#x27;].touched || this.Form.controls[&#x27;tel&#x27;].dirty)&quot;&gt;Es un campo obligatorio&lt;/p&gt;
+        &lt;/ion-item&gt;
+
+        &lt;ion-item class&#x3D;&quot;LogDivItemPassword&quot;&gt;
+          &lt;ion-label class&#x3D;&quot;label&quot;&gt;&lt;ion-icon class&#x3D;&quot;Icon&quot;  name&#x3D;&quot;lock&quot;&gt;&lt;/ion-icon&gt;&lt;/ion-label&gt;
+          &lt;ion-input type&#x3D;&quot;password&quot; formControlName&#x3D;&quot;password&quot; placeholder&#x3D;&quot;Contraseña&quot;&gt;&lt;/ion-input&gt;
+        &lt;/ion-item&gt;
+        
+        &lt;ion-item class&#x3D;&quot;Error-message&quot;&gt;
+          &lt;p style&#x3D;&quot;color:red&quot; *ngIf&#x3D;&quot;this.Form.controls[&#x27;password&#x27;].hasError(&#x27;required&#x27;) &amp;&amp; (this.Form.controls[&#x27;password&#x27;].touched || this.Form.controls[&#x27;password&#x27;].dirty)&quot;&gt;Es un campo obligatorio&lt;/p&gt;
+        &lt;/ion-item&gt;
+
+        &lt;ion-item class&#x3D;&quot;LogDivItemPassword&quot;&gt;
+          &lt;ion-label class&#x3D;&quot;label&quot;&gt;&lt;ion-icon class&#x3D;&quot;Icon&quot;  name&#x3D;&quot;unlock&quot;&gt;&lt;/ion-icon&gt;&lt;/ion-label&gt;
+          &lt;ion-input type&#x3D;&quot;password&quot;  formControlName&#x3D;&quot;confirmed&quot; placeholder&#x3D;&quot;Confirmar Contraseña&quot;&gt;&lt;/ion-input&gt;
+        &lt;/ion-item&gt;
+
+        &lt;ion-item class&#x3D;&quot;Error-message&quot;&gt;
+          &lt;p style&#x3D;&quot;color:red&quot; *ngIf&#x3D;&quot;this.Form.controls[&#x27;confirmed&#x27;].hasError(&#x27;required&#x27;) &amp;&amp; (this.Form.controls[&#x27;confirmed&#x27;].touched || this.Form.controls[&#x27;confirmed&#x27;].dirty)&quot;&gt;Es un campo obligatorio&lt;/p&gt;
+        &lt;/ion-item&gt;
+
+        &lt;ion-item class&#x3D;&quot;LogDivItemName&quot;&gt;
+          &lt;ion-label&gt;Genero&lt;/ion-label&gt;
+          &lt;ion-select formControlName&#x3D;&quot;Sex&quot;&gt;
+            &lt;ion-option value&#x3D;&quot;Hombre&quot;&gt;Hombre&lt;/ion-option&gt;
+            &lt;ion-option value&#x3D;&quot;Mujer&quot;&gt;Mujer&lt;/ion-option&gt;
+          &lt;/ion-select&gt;
+        &lt;/ion-item&gt;
+
+        &lt;ion-item class&#x3D;&quot;LogDivItemName&quot;&gt;
+          &lt;ion-label&gt;Discapacidad&lt;/ion-label&gt;
+          &lt;ion-select formControlName&#x3D;&quot;type&quot;&gt;
+            &lt;ion-option value&#x3D;&quot;Visual&quot;&gt;Visual&lt;/ion-option&gt;
+            &lt;ion-option value&#x3D;&quot;Auditiva&quot;&gt;Auditiva&lt;/ion-option&gt;
+            &lt;ion-option value&#x3D;&quot;Auditiva y Visual&quot;&gt;Auditiva y Visual&lt;/ion-option&gt;
+            &lt;ion-option value&#x3D;&quot;Ninguna&quot;&gt;Ninguna&lt;/ion-option&gt;
+          &lt;/ion-select&gt;
+        &lt;/ion-item&gt;
+
+      &lt;/form&gt;
+    &lt;/ion-card-content&gt;
+  &lt;/ion-card&gt;
+
+  
+
+
+  &lt;div class&#x3D;&quot;Next&quot; (click)&#x3D;&quot;Register()&quot;&gt;
+    &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;TextNext&quot;&gt;Registrar&lt;/button&gt;
+    &lt;ion-icon class&#x3D;&quot;Arror-Icon-Forward&quot; name&#x3D;&quot;arrow-round-forward&quot;&gt;&lt;/ion-icon&gt;
+  &lt;/div&gt;
+
+&lt;/ion-content&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!--  Generated template for the LoginPage page.  See http://ionicframework.com/docs/components/#navigation for more info on  Ionic pages and navigation.--><ion-content padding class="Content">    <div class="Back">    <ion-icon class="IconBack" (click)="goToBack()" name="arrow-round-back"></ion-icon>  </div>    <div class="Logo">    <img class="img" src="assets/imgs/icon.png">  </div>    <ion-card class="Card">    <ion-card-header class="Header-Card">      Nueva Cuenta    </ion-card-header>    <ion-card-content>      <form [formGroup]="Form">         <ion-item class="LogDivItemName">          <ion-label class="label"><ion-icon class="Icon" name="contact"></ion-icon></ion-label>          <ion-input type="text"  formControlName="Nom" placeholder="Nombre Completo"></ion-input>                  </ion-item>        <ion-item class="Error-message">            <p style="color:red" *ngIf="this.Form.controls[\'Nom\'].hasError(\'required\') && (this.Form.controls[\'Nom\'].touched || this.Form.controls[\'Nom\'].dirty)">Es  campo obligatorio</p>        </ion-item>                <ion-item class="LogDivItemName">          <ion-label class="label"><ion-icon class="Icon" name="contact"></ion-icon></ion-label>          <ion-input type="email" formControlName="Email" placeholder="correo"></ion-input>        </ion-item>        <ion-item class="Error-message">          <p style="color:red" *ngIf="this.Form.controls[\'Email\'].hasError(\'required\') && (this.Form.controls[\'Email\'].touched || this.Form.controls[\'Email\'].dirty)">Es un campo obligatorio</p>        </ion-item>        <ion-item class="LogDivItemNumber">          <ion-label class="label"><ion-icon class="Icon" name="phone-portrait"></ion-icon></ion-label>          <ion-input type="number" formControlName="tel" placeholder="Numero Celuar"></ion-input>        </ion-item>                <ion-item class="Error-message">          <p style="color:red" *ngIf="this.Form.controls[\'tel\'].hasError(\'required\') && (this.Form.controls[\'tel\'].touched || this.Form.controls[\'tel\'].dirty)">Es un campo obligatorio</p>        </ion-item>        <ion-item class="LogDivItemPassword">          <ion-label class="label"><ion-icon class="Icon"  name="lock"></ion-icon></ion-label>          <ion-input type="password" formControlName="password" placeholder="Contraseña"></ion-input>        </ion-item>                <ion-item class="Error-message">          <p style="color:red" *ngIf="this.Form.controls[\'password\'].hasError(\'required\') && (this.Form.controls[\'password\'].touched || this.Form.controls[\'password\'].dirty)">Es un campo obligatorio</p>        </ion-item>        <ion-item class="LogDivItemPassword">          <ion-label class="label"><ion-icon class="Icon"  name="unlock"></ion-icon></ion-label>          <ion-input type="password"  formControlName="confirmed" placeholder="Confirmar Contraseña"></ion-input>        </ion-item>        <ion-item class="Error-message">          <p style="color:red" *ngIf="this.Form.controls[\'confirmed\'].hasError(\'required\') && (this.Form.controls[\'confirmed\'].touched || this.Form.controls[\'confirmed\'].dirty)">Es un campo obligatorio</p>        </ion-item>        <ion-item class="LogDivItemName">          <ion-label>Genero</ion-label>          <ion-select formControlName="Sex">            <ion-option value="Hombre">Hombre</ion-option>            <ion-option value="Mujer">Mujer</ion-option>          </ion-select>        </ion-item>        <ion-item class="LogDivItemName">          <ion-label>Discapacidad</ion-label>          <ion-select formControlName="type">            <ion-option value="Visual">Visual</ion-option>            <ion-option value="Auditiva">Auditiva</ion-option>            <ion-option value="Auditiva y Visual">Auditiva y Visual</ion-option>            <ion-option value="Ninguna">Ninguna</ion-option>          </ion-select>        </ion-item>      </form>    </ion-card-content>  </ion-card>    <div class="Next" (click)="Register()">    <button type="submit" class="TextNext">Registrar</button>    <ion-icon class="Arror-Icon-Forward" name="arrow-round-forward"></ion-icon>  </div></ion-content></div>'
+    var COMPONENTS = [{'name': 'AddFriendPage', 'selector': 'page-add-friend'},{'name': 'ChatMorsePage', 'selector': 'page-chatdb'},{'name': 'ChatPage', 'selector': 'page-chat'},{'name': 'HomePage', 'selector': 'page-home'},{'name': 'LoginPage', 'selector': 'page-login'},{'name': 'LostpasswordPage', 'selector': 'page-lostpassword'},{'name': 'MyApp', 'selector': ''},{'name': 'ProfilePage', 'selector': 'page-profile'},{'name': 'RegisterPage', 'selector': 'page-register'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'RegisterPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'RegisterPage.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -10,13 +10,16 @@ import { AngularFireDatabase } from 'angularfire2/database';
   and Angular DI.
 */
 
+/**
+ * this interface is the object related to the users
+ */
 export interface User{
-  uid: String;
-  nombre: String;
-  correo: String;
-  discapacidad: String;
-  password: String;
-  tel: number;
+  uid: String;            // is user's uid 
+  nombre: String;         // is user's name
+  correo: String;         // is user's email
+  discapacidad: String;   // is user's type disability
+  password: String;       // is user's password
+  tel: number;            // is user's phone
 }
 @Injectable()
 export class DataProvider {
@@ -24,6 +27,10 @@ export class DataProvider {
   constructor(private afAuth :  AngularFireAuth, private afDB: AngularFireDatabase) {
 
   }
+  /**
+   * this function saves the user's information
+   * @param uid is uid of current user
+   */
 
   SetUser(uid){
     let receivedUser:any;
@@ -39,12 +46,19 @@ export class DataProvider {
    
   }
   
-
+  /**
+   * this function reset password of current user
+   * @param email 
+   */
 
   resetPassword(email: string) {
     var auth = firebase.auth();
     return auth.sendPasswordResetEmail(email)
   }
+
+  /**
+   * this function logout current user
+   */
 
   logout(){
     this.afAuth.auth.signOut().catch( function(error){
@@ -52,14 +66,26 @@ export class DataProvider {
     });
   }
 
+  /**
+   * this function get current session
+   */
+
   get Session(){
     return this.afAuth.authState;
   }
 
+  /**
+   * this function change password of current user
+   * @param password is new password
+   */
   ChangePassword(password: String){
     this.User.password=password;
   }
 
+  /**
+   * this function return current user
+   */
+  
   CurrentUser(){
     return this.User;
   }

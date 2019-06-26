@@ -2,13 +2,13 @@ import { Component} from '@angular/core';
 import { NgZone  } from '@angular/core';
 import { Events } from 'ionic-angular';
 import { NavController } from 'ionic-angular';
-import { ChatPage } from '../Chats/chat/chat';
+import { ChatPage } from '../chat/chat';
 import { ProfilePage } from '../profile/profile';
 import {AddFriendPage} from '../add-friend/add-friend'
 import {DataProvider} from '../../providers/data/data';
 import * as firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { ChatdbPage} from '../chatdb/chatdb';
+import { ChatMorsePage} from '../chatMorse/chatdb';
 import {VibrationProvider} from '../../providers/vibration/vibration';
 import {MorseProvider} from '../../providers/morse/morse'
 @Component({
@@ -16,12 +16,10 @@ import {MorseProvider} from '../../providers/morse/morse'
   templateUrl: 'home.html'
 })
 export class HomePage {
-  temparr = [];
-  numChat: number= -1;
+  numChat: number= -1; 
   filter = [];
-  message;
+  message = [];
   search: string ='';
-  myrequests;
   user: any;
   constructor(public navCtrl: NavController, private auth: DataProvider,public events: Events,private zone: NgZone,private afDB: AngularFireDatabase,private vibration: VibrationProvider, private traslate: MorseProvider) {
     this.GetMessage();
@@ -35,26 +33,47 @@ export class HomePage {
 
   }
   
+  /**
+   * this function get new message
+   */
+
   ngOnChanges(){
     this.GetMessage();
   }
 
-  goToLogin(){
-    this.auth.logout();
-  }
-  
+/**
+ *  this function redirects to the profile page
+ */
+
   goToPerfil(){
     this.navCtrl.push(ProfilePage);
   }
   
+ /**
+  *   this function redirects to the addFriend page
+  */ 
+  addFriend(){
+    this.navCtrl.push(AddFriendPage);
+  }
+
+/**
+ * this function redirects to a specific chat
+ * @param id is the chat id
+ * @param nombre  is the name of the chat user
+ */
+
   goToChat(id,nombre){
     if(this.auth.CurrentUser().discapacidad.indexOf('Auditiva')>-1){
-      this.navCtrl.push(ChatdbPage,{uid: id, nombre: nombre});
+      this.navCtrl.push(ChatMorsePage,{uid: id, nombre: nombre});
     }
     else{
       this.navCtrl.push(ChatPage,{uid: id, nombre: nombre});
     }
   }
+
+  /**
+   *  this function takes the messages and updates the view
+   */
 
   GetMessage(){
     var messageRef= firebase.database().ref("/usuarios/"+ firebase.auth().currentUser.uid+"/mensajes");
@@ -79,15 +98,19 @@ export class HomePage {
     
   }
 
-  addFriend(){
-    this.navCtrl.push(AddFriendPage);
-  }
+  /**
+   *  this function returns filtered chats
+   */
 
   FilteredItems(){
     return this.message.filter((item)=>{
-      return item.nombre.toLowerCase().indexOf(this.search)>-1;
+      return item.nombre.toLowerCase().indexOf(this.search.toLowerCase())>-1;
     })
   }
+
+  /**
+   *  this function sort the messages
+   */
 
   setFilteredItems(){
     this.filter= this.FilteredItems().sort(function(a,b){
@@ -101,6 +124,10 @@ export class HomePage {
       return 0;
     })
   }
+
+  /**
+   *  this function selects the messages descending
+   */
 
   DownList(){
     if( this.numChat==-1){
@@ -119,6 +146,10 @@ export class HomePage {
     }
   }
 
+  /**
+   * this function selects messages upwards
+   */
+
   UpList(){
     if( this.numChat>=1 && this.numChat<this.filter.length){
       this.vibration.stopVibrate();
@@ -129,6 +160,10 @@ export class HomePage {
       this.vibration.VibrateMessage(this.traslate.Traducir(this.filter[this.numChat].nombre));
     }
   }
+
+/**
+ *  this function selects a specific message 
+ */
 
   Enter(){
     this.goToChat(this.filter[this.numChat].uid,this.filter[this.numChat].nombre);

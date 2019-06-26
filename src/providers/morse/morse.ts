@@ -347,6 +347,10 @@ export class MorseProvider {
     console.log('Hello MorseProvider Provider');
   }
 
+  /**
+   * this function translates a message to morse code
+   * @param mensaje is the message to be translated
+   */
   Morse(mensaje){
     var message = "";
     var mmCopy = [];
@@ -375,6 +379,10 @@ export class MorseProvider {
     }   
 }
 
+/**
+ * this function traslate a message to Spanish alphabet
+ * @param code is code morse to be traslated
+ */
 Traducir(code){
     var message = "";
     var inputMessage = code.split("").map(function(key){

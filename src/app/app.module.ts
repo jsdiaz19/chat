@@ -4,17 +4,16 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
-import {ChatdbPage} from '../pages/chatdb/chatdb';
+import {ChatMorsePage} from '../pages/chatMorse/chatdb';
 import { LoginPage } from '../pages/login/login';
 import { LostpasswordPage } from '../pages/lostpassword/lostpassword';
 import { RegisterPage } from '../pages/register/register';
-import { ChatPage } from '../pages/Chats/chat/chat';
+import { ChatPage } from '../pages/chat/chat';
 import { ProfilePage } from '../pages/profile/profile';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { BdProvider } from '../providers/bd/bd';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -26,7 +25,6 @@ import { RegisterProvider } from '../providers/register/register';
 import { LoginProvider } from '../providers/login/login';
 import { DataProvider } from '../providers/data/data';
 import { ChangePasswordProvider } from '../providers/change-password/change-password';
-import {RelatioshipPage} from '../pages/relatioship/relatioship'
 import {AddFriendPage} from '../pages/add-friend/add-friend';
 import { AvatarModule } from 'ngx-avatar';
 import { IonTextAvatar } from 'ionic-text-avatar';
@@ -51,8 +49,7 @@ export const firebaseConfig = {
     RegisterPage,
     ChatPage,
     ProfilePage,
-    ChatdbPage,
-    RelatioshipPage,
+    ChatMorsePage,
     AddFriendPage,
     IonTextAvatar,
   ],
@@ -73,12 +70,11 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     LoginPage,
-    ChatdbPage,
+    ChatMorsePage,
     LostpasswordPage,
     RegisterPage,
     ChatPage,
     ProfilePage,
-    RelatioshipPage,
     AddFriendPage
   ],
   providers: [
@@ -86,7 +82,6 @@ export const firebaseConfig = {
     SplashScreen,
     Vibration,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    BdProvider,
     RegisterProvider,
     LoginProvider,
     DataProvider,

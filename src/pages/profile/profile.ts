@@ -35,11 +35,14 @@ export class ProfilePage {
     console.log('ionViewDidLoad ProfilePage');
   }
 
+  /**
+   *  this function change password of current user
+   */
+
   ChangePassword(){
     if( !this.Form.invalid && this.Form.controls['Password'].value== this.CurrentUser.password
       && this.Form.controls['NewPassword'].value== this.Form.controls['PasswordConfirm'].value){
       this.Password.UpdatePassword(this.Form.controls['NewPassword'].value).then(result=>{
-        console.log('entro');
         this.bd.ChangePassword(this.Form.controls['NewPassword'].value)
         this.CurrentUser.password=this.Form.controls['NewPassword'].value;
         this.afdb.list("usuarios/").update(this.CurrentUser.uid,this.CurrentUser);
@@ -54,6 +57,10 @@ export class ProfilePage {
     }
   }
 
+  /**
+   *  this function logout current user
+   */
+  
   Logout(){
     this.bd.logout();
   }

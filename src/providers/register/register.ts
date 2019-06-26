@@ -15,6 +15,12 @@ export class RegisterProvider {
     console.log('Hello RegisterProvider Provider');
   }
 
+  /**
+   * this function register a new user
+   * @param email is user's email
+   * @param password is user's password
+   */
+  
   registerUser(email:string, password:string){
     return this.afAuth.auth.createUserWithEmailAndPassword( email, password)
     .then(res=>Promise.resolve(res))

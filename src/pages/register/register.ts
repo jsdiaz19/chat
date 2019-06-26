@@ -5,13 +5,14 @@ import { LoginPage } from '../login/login';
 import {RegisterProvider} from '../../providers/register/register';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { FormGroup, Validators,FormControl } from '@angular/forms';
-import {DataProvider} from '../../providers/data/data';
+
 /**
  * Generated class for the RegisterPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+
 declare var window: any;
 @IonicPage()
 @Component({
@@ -40,7 +41,6 @@ export class RegisterPage {
     public alertCtrl : AlertController,
     private afDB: AngularFireDatabase,
     private platform: Platform,
-    private data: DataProvider
     ) {
       document.addEventListener("deviceready", onDeviceReady, false);
       function onDeviceReady() {
@@ -48,23 +48,36 @@ export class RegisterPage {
       }
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
-  }
+  /**
+   * this function redirect Home page
+   */
   
   goToHome(){
     this.navCtrl.push(HomePage);
   }
   
+  /**
+   *  this function redirect login page
+   */
+
   goToBack(){
     this.navCtrl.push(LoginPage);
   }
+
+  /**
+   * this function show messages type Toast
+   * @param message is the message to show
+   */
 
   ShowToast(message){
     this.platform.ready().then(()=>{
       window.plugins.toast.show(message,"short","bottom")
     })
   }
+
+  /**
+   *  this function registers a new user
+   */
 
   Register(){
     if(!this.Form.invalid && this.Form.controls['password'].value==this.Form.controls['confirmed'].value){

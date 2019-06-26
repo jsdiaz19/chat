@@ -2,11 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,AlertController,Platform  } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { LostpasswordPage } from '../lostpassword/lostpassword';
-import { HomePage } from '../home/home';
 import {LoginProvider} from '../../providers/login/login'
 import {DataProvider} from '../../providers/data/data'
 import {FormGroup, Validators,FormControl } from '@angular/forms';
-import { Toast } from '@ionic-native/toast/ngx';
 /**
  * Generated class for the LoginPage page.
  *
@@ -35,19 +33,36 @@ export class LoginPage {
     private platform: Platform) {
   }
   
+  /**
+   * this function redirect to register page
+   */
+
   goToRegister(){
     this.navCtrl.push(RegisterPage);
   }
   
+  /**
+   * this function redirect lostPassword page
+   */
+
   goToLostPassword(){
     this.navCtrl.push(LostpasswordPage);
   } 
 
+  /**
+   * this function show message type Toast
+   */
+  
   ShowToast(message){
     this.platform.ready().then(()=>{
       window.plugins.toast.show(message,"short","bottom")
     })
   }
+
+/**
+  *   this function allows a user to enter the system
+*/
+
   login(){
     if(!this.Form.invalid){
       this.auth.loginUser(this.Form.controls['user'].value,this.Form.controls['password'].value)

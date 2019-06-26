@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase } from 'angularfire2/database';
 import * as firebase from 'firebase';
-import {DataProvider} from '../../providers/data/data'
 
 /*
   Generated class for the LoginProvider provider.
@@ -12,9 +9,14 @@ import {DataProvider} from '../../providers/data/data'
 */
 @Injectable()
 export class LoginProvider {
-  constructor( private afAuth :  AngularFireAuth, private afDB: AngularFireDatabase) {
+  constructor( ) {
   }
 
+  /**
+   * this function allows the entry of a specific user into the system
+   * @param email is user's email
+   * @param password is user's password
+   */
   loginUser(email:string, password:string){
     return firebase.auth().signInWithEmailAndPassword(email, password)
       .then( user=> Promise.resolve(user))

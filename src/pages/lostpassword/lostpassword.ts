@@ -23,6 +23,9 @@ export class LostpasswordPage {
     console.log('ionViewDidLoad LostpasswordPage');
   }
   
+  /**
+   *  this function reset password of current user 
+   */
   goToLogin(){
     this.auth.resetPassword(this.email).then(() => this.navCtrl.push(LoginPage))
     .catch(err=>{
@@ -34,6 +37,10 @@ export class LostpasswordPage {
       alert.present();
     })
   }
+  
+  /**
+   *  this function redirect login page
+   */
   
   goToBack(){
     this.navCtrl.push(LoginPage);
