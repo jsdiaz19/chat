@@ -5,79 +5,47 @@
   Ionic pages and navigation.
 -->
 
-<ion-content padding class="Content">
+
+<ion-content class="Content">
   
   <div class="Back">
     <ion-icon class="IconBack" (click)="goToBack()" name="arrow-round-back"></ion-icon>
   </div>
   
-  <div class="Logo">
-    <img class="img" src="assets/imgs/icon.png">
+  <div class="DivLogo">
+    <img class="log" src="assets/imgs/i.png">
+    <ion-icon class="IconCreate" name="ios-create-outline"></ion-icon>
   </div>
   
 
-  <ion-card class="Card">
-    <ion-card-header class="Header-Card">
-      Nueva Cuenta
-    </ion-card-header>
-    <ion-card-content>
-      <form [formGroup]="Form"> 
-        <ion-item class="LogDivItemName">
-          <ion-label class="label"><ion-icon class="Icon" name="contact"></ion-icon></ion-label>
-          <ion-input type="text"  formControlName="Nom" placeholder="Nombre Completo"></ion-input>
-          
-        </ion-item>
 
-        <ion-item class="Error-message">
-            <p style="color:red" *ngIf="this.Form.controls['Nom'].hasError('required') && (this.Form.controls['Nom'].touched || this.Form.controls['Nom'].dirty)">Es  campo obligatorio</p>
-        </ion-item>        
-
-        <ion-item class="LogDivItemName">
-          <ion-label class="label"><ion-icon class="Icon" name="contact"></ion-icon></ion-label>
-          <ion-input type="email" formControlName="Email" placeholder="correo"></ion-input>
-        </ion-item>
-
-        <ion-item class="Error-message">
-          <p style="color:red" *ngIf="this.Form.controls['Email'].hasError('required') && (this.Form.controls['Email'].touched || this.Form.controls['Email'].dirty)">Es un campo obligatorio</p>
-        </ion-item>
-
-        <ion-item class="LogDivItemNumber">
-          <ion-label class="label"><ion-icon class="Icon" name="phone-portrait"></ion-icon></ion-label>
-          <ion-input type="number" formControlName="tel" placeholder="Numero Celuar"></ion-input>
-        </ion-item>
+      <form [formGroup]="Form" class="FormRegister"> 
         
-        <ion-item class="Error-message">
-          <p style="color:red" *ngIf="this.Form.controls['tel'].hasError('required') && (this.Form.controls['tel'].touched || this.Form.controls['tel'].dirty)">Es un campo obligatorio</p>
-        </ion-item>
-
-        <ion-item class="LogDivItemPassword">
-          <ion-label class="label"><ion-icon class="Icon"  name="lock"></ion-icon></ion-label>
-          <ion-input type="password" formControlName="password" placeholder="Contraseña"></ion-input>
-        </ion-item>
         
-        <ion-item class="Error-message">
-          <p style="color:red" *ngIf="this.Form.controls['password'].hasError('required') && (this.Form.controls['password'].touched || this.Form.controls['password'].dirty)">Es un campo obligatorio</p>
+        <ion-item class="LogDivItem">
+          <ion-icon name="person" item-start></ion-icon>
+          <ion-label stacked>Nombre completo</ion-label>
+          <ion-input type="text"  formControlName="Nom" ></ion-input>
         </ion-item>
 
-        <ion-item class="LogDivItemPassword">
-          <ion-label class="label"><ion-icon class="Icon"  name="unlock"></ion-icon></ion-label>
-          <ion-input type="password"  formControlName="confirmed" placeholder="Confirmar Contraseña"></ion-input>
+        <div class="Error-message" *ngIf="this.Form.controls['Nom'].hasError('required') && (this.Form.controls['Nom'].touched || this.Form.controls['Nom'].dirty)">
+            <p style="color:red" >Es  campo obligatorio</p>
+        </div> 
+
+        <ion-item class="LogDivItem">
+            <ion-icon name="call" item-start></ion-icon>
+          <ion-label stacked>Numero Celuar</ion-label>
+          <ion-input type="number" formControlName="tel"></ion-input>
         </ion-item>
 
-        <ion-item class="Error-message">
-          <p style="color:red" *ngIf="this.Form.controls['confirmed'].hasError('required') && (this.Form.controls['confirmed'].touched || this.Form.controls['confirmed'].dirty)">Es un campo obligatorio</p>
-        </ion-item>
+        <div class="Error-message" *ngIf="this.Form.controls['tel'].hasError('required') && (this.Form.controls['tel'].touched || this.Form.controls['tel'].dirty)">
+            <p style="color:red" >Es un campo obligatorio</p>
+        </div> 
 
-        <ion-item class="LogDivItemName">
-          <ion-label>Genero</ion-label>
-          <ion-select formControlName="Sex">
-            <ion-option value="Hombre">Hombre</ion-option>
-            <ion-option value="Mujer">Mujer</ion-option>
-          </ion-select>
-        </ion-item>
 
-        <ion-item class="LogDivItemName">
-          <ion-label>Discapacidad</ion-label>
+        <ion-item class="LogDivItem">
+          <ion-icon name="md-walk" item-start></ion-icon>
+          <ion-label stacked>Discapacidad</ion-label>
           <ion-select formControlName="type">
             <ion-option value="Visual">Visual</ion-option>
             <ion-option value="Auditiva">Auditiva</ion-option>
@@ -86,9 +54,42 @@
           </ion-select>
         </ion-item>
 
+        <div class="Error-message" *ngIf="this.Form.controls['type'].hasError('required') && (this.Form.controls['type'].touched || this.Form.controls['type'].dirty)">
+            <p style="color:red" >Es un campo obligatorio</p>
+        </div>  
+
+        <ion-item class="LogDivItem">
+          <ion-icon name="md-at" item-start></ion-icon>
+          <ion-label stacked>Correo</ion-label>
+          <ion-input type="email" formControlName="Email" ></ion-input>
+        </ion-item>
+
+        <div class="Error-message" *ngIf="this.Form.controls['Email'].hasError('required') && (this.Form.controls['Email'].touched || this.Form.controls['Email'].dirty)">
+          <p style="color:red" >Es un campo obligatorio</p>
+        </div>
+
+        <ion-item class="LogDivItem">
+            <ion-icon name="md-lock" item-start></ion-icon>
+          <ion-label stacked>Contraseña</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+        
+        <div class="Error-message" *ngIf="this.Form.controls['password'].hasError('required') && (this.Form.controls['password'].touched || this.Form.controls['password'].dirty)">
+          <p style="color:red" >Es un campo obligatorio</p>
+        </div>
+
+        <ion-item class="LogDivItem">
+            <ion-icon name="md-lock" item-start></ion-icon>
+          <ion-label stacked>Confirmar Contraseña</ion-label>
+          <ion-input type="password"  formControlName="confirmed" ></ion-input>
+        </ion-item>
+
+        <div class="Error-message" *ngIf="this.Form.controls['confirmed'].hasError('required') && (this.Form.controls['confirmed'].touched || this.Form.controls['confirmed'].dirty)">
+          <p style="color:red" >Es un campo obligatorio</p>
+        </div>
+
       </form>
-    </ion-card-content>
-  </ion-card>
+
 
   
 

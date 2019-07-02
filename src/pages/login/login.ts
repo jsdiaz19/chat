@@ -67,15 +67,15 @@ export class LoginPage {
     if(!this.Form.invalid){
       this.auth.loginUser(this.Form.controls['user'].value,this.Form.controls['password'].value)
         .then(user=>{
-          //this.ShowToast('Logeado');
+          //this.ShowToast('Bienvenido');
           this.Data.SetUser(user.user.uid);
         })
         .catch( err=>{
-          //this.ShowToast('El usuario no existo');
+          //this.ShowToast('Usuario no registrado');
         })
     }
     else{
-      //this.ShowToast('Hay campos incorrectamente diligenciado');
+      //this.ShowToast('Usuario no registrado');
     }
       
   }

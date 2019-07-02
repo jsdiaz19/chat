@@ -1,28 +1,40 @@
 
-.Logo{
-    width: 200px;
-    margin-top: 20px;
+.imgDiv{
+    max-width:60%;
+    height:auto;
+    display: block;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 40px;
+    
+}
+
+.LogoDiv{
+    background-color: map-get($colors, primary);
+    width: 100%;
+    height: 150px;
+    margin-top: 0;
 }
 
 .LogDiv{
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
-.LogDivItemNumber{
-    width: 250px;
+.LogDivItem{
+    width: 290px;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 30px;
+    
 }
 
-.LogDivItemPassword{
-    margin-top: 15px;
-    width: 250px;
+
+.Message{
+    width: 260px;
     margin-left: auto;
     margin-right: auto;
+    
 }
-
 .Icon{
     color: map-get($colors, primary);
 }
@@ -75,7 +87,7 @@
 
 .TextSignupBtn{
     font-size: 15px;
-    color: map-get($colors, primary);
+    color:  map-get($colors, primary);
     font-weight: bold;
     margin: 0;
     margin-top: 5px;

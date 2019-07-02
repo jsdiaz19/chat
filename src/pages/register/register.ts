@@ -31,8 +31,7 @@ export class RegisterPage {
     tel: new FormControl('',Validators.required),
     password: new FormControl('',Validators.required),
     confirmed: new FormControl('',Validators.required),
-    type: new FormControl('',Validators.required),
-    Sex: new FormControl('',Validators.required),
+    type: new FormControl('',Validators.required)
   });
   constructor(
     public navCtrl: NavController, 
@@ -98,10 +97,10 @@ export class RegisterPage {
     }
     else{
       if( this.Form.controls['password'].value!=this.Form.controls['confirmed'].value){
-        //this.ShowToast('Verifica la contraseña')
+        this.ShowToast('Verifica la contraseña')
       }
       else{
-        //this.ShowToast('Hay campos incorrectamente diligenciado');
+        this.ShowToast('Hay campos incorrectamente diligenciado');
       }
       navigator.vibrate([2000]);
     }

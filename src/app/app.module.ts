@@ -55,7 +55,12 @@ export const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      tabsHideOnSubPages: true,
+      scrollAssist: false,
+      autoFocusAssist: false,
+      scrollPadding:false
+    }),
     AngularFireAuthModule,
     HttpClientModule,
     AngularFireModule.initializeApp(firebaseConfig),
