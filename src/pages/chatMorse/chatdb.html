@@ -1,20 +1,16 @@
 <ion-header color=primary>
-  <ion-navbar color=primary>
+  <ion-navbar color=primary hideBackButton>
     <ion-title> {{name.charAt(0).toUpperCase() + name.slice(1)}}</ion-title>
+    <ion-buttons left>
+        <button ion-button icon-only (click)="goBack()">
+            <ion-icon name="arrow-back"></ion-icon>
+        </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <div class="touch">
-    <ion-grid class="grid">
-      <ion-row >
-        <ion-col class="touchUp" (click)="UpMessage()"> 
-        </ion-col>
-        <ion-col class="touchDown" (click)="DownMessage()">
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
+<ion-content (click)="get($event)">
+
   <ion-list>
     <ion-item no-lines>
       <div class="message" *ngFor="let mensaje of mensajes" [ngClass]="mensaje.type" [ngStyle]="{ background: mensaje.isSelect ? '#e1dddc': 'white'}">

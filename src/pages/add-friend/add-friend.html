@@ -11,8 +11,9 @@
 
 <ion-content padding>
   <ion-item >
-      <span item-left><ion-icon name="mail"></ion-icon></span>
-      <ion-input placeholder="Digite el correo" [(ngModel)]="email"> </ion-input>
+    <ion-label class="label" floating>Correo</ion-label>
+    <ion-icon class="Icon" name="md-contact" item-start></ion-icon>
+      <ion-input [(ngModel)]="email"> </ion-input>
   </ion-item>
   
   <div class="container" (click)="AddFriend()">

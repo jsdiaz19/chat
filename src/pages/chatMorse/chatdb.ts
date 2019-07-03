@@ -1,5 +1,5 @@
-import { Component} from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild} from '@angular/core';
+import { IonicPage, NavController, NavParams,Navbar, Platform  } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
 import {DataProvider} from '../../providers/data/data';
@@ -28,14 +28,20 @@ export class ChatMorsePage {
   keyPressDuration = null;
   spaceDuration = 500;
   
+  @ViewChild('navbar') navBar: Navbar;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private afDB: AngularFireDatabase, private data: DataProvider, private vibration: VibrationProvider,private morse: MorseProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private afDB: AngularFireDatabase, private data: DataProvider, private vibration: VibrationProvider,private morse: MorseProvider,private platform: Platform) {
     this.ChatId= this.navParams.get('uid');
     this.afDB.list("/usuarios/"+firebase.auth().currentUser.uid+"/mensajes/"+this.ChatId).set("viewed",'viewed');
     this.name= this.navParams.get('nombre');
     this.getChat();
   }
-  
+
+
+  goBack(){
+    this.vibration.stopVibrate();
+    this.navCtrl.pop();
+  }
 
 
   Start = new Promise(function(resolve, reject) {
@@ -133,6 +139,7 @@ getChat(){
       for(var key in data){
         if(key!='nombre' && key!='viewed'){
           this.mensajes.push({menssaje: this.morse.Traducir(data[key]['message']), type: data[key]['type'], isSelect: false} );
+          this.mensajes.push({menssaje: data[key]['message'], type: data[key]['type'], isSelect: false} );
         }
       }
     })
@@ -156,16 +163,16 @@ getChat(){
 
   UpMessage(){
     if( this.currentMessage ==-1){
-      this.currentMessage +=this.mensajes.length;
+      this.currentMessage +=this.mensajes.length-1;
       this.mensajes[this.currentMessage].isSelect=true;
       this.vibration.beginVibrate();
       this.vibration.VibrateMessage(this.mensajes[this.currentMessage].menssaje);
     }
     else if( this.currentMessage>=1){
       this.vibration.stopVibrate();
-      this.currentMessage-=1;
+      this.currentMessage-=2;
       this.mensajes[this.currentMessage].isSelect=true;
-      this.mensajes[this.currentMessage+1].isSelect=false;
+      this.mensajes[this.currentMessage+2].isSelect=false;
       this.vibration.beginVibrate();
       this.vibration.VibrateMessage(this.mensajes[this.currentMessage].menssaje);
     }
@@ -178,11 +185,20 @@ getChat(){
   DownMessage(){
     if( this.currentMessage>=0 && this.currentMessage<this.mensajes.length-1){
       this.vibration.stopVibrate();
-      this.currentMessage+=1;
+      this.currentMessage+=2;
       this.mensajes[this.currentMessage].isSelect=true;
-      this.mensajes[this.currentMessage-1].isSelect=false;
+      this.mensajes[this.currentMessage-2].isSelect=false;
       this.vibration.beginVibrate();
       this.vibration.VibrateMessage(this.mensajes[this.currentMessage].menssaje);
+    }
+  }
+
+  get(event){
+    if(event.screenX<=200){
+      this.UpMessage();
+    }
+    else{
+      this.DownMessage();
     }
   }
 }

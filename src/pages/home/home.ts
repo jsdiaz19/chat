@@ -64,6 +64,7 @@ export class HomePage {
 
   goToChat(id,nombre){
     if(this.auth.CurrentUser().discapacidad.indexOf('Auditiva')>-1){
+      this.vibration.stopVibrate();
       this.navCtrl.push(ChatMorsePage,{uid: id, nombre: nombre});
     }
     else{

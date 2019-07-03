@@ -40,7 +40,7 @@
     </ion-fab>
   </div>
 
-  <div class="spaceBar">
+  <div class="spaceBar" *ngIf="user.discapacidad==='Ninguna'"> 
     <ion-searchbar [(ngModel)]="search" (ionInput)="setFilteredItems()" placeholder="Busca en tus contactos" ></ion-searchbar> 
   </div> 
   <ion-list>

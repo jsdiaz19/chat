@@ -83,7 +83,7 @@ export class RegisterPage {
       this.auth.registerUser(this.Form.controls['Email'].value,this.Form.controls['password'].value)
       .then((user) => {
         this.afDB.list("/usuarios/"+ user.user.uid).set("info",{nombre: this.Form.controls['Nom'].value,tel: this.Form.controls['tel'].value,password:this.Form.controls['password'].value,correo:this.Form.controls['Email'].value, discapacidad: this.Form.controls['type'].value} );
-        //this.ShowToast('Registro exitoso');
+        this.ShowToast('Registro exitoso');
         this.navCtrl.push(LoginPage);
       })
       .catch(err=>{

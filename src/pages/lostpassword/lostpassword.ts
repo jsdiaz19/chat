@@ -27,7 +27,10 @@ export class LostpasswordPage {
    *  this function reset password of current user 
    */
   goToLogin(){
-    this.auth.resetPassword(this.email).then(() => this.navCtrl.push(LoginPage))
+    this.auth.resetPassword(this.email).then(() => {
+      alert("Hemos enviado un correo electronico");
+      this.navCtrl.push(LoginPage)
+    })
     .catch(err=>{
       let alert = this.alertCtrl.create({
         title: 'Error',
