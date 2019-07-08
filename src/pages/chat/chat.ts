@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import { IonicPage, NavController, NavParams, Content, List} from 'ionic-angular';
 import * as firebase from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
 import {DataProvider} from '../../providers/data/data';
@@ -21,11 +21,24 @@ export class ChatPage {
   name: string;
   message;
   mensaje: string='';
+  @ViewChild(Content) content: Content
+  @ViewChild(List, {read: ElementRef}) chatList: ElementRef;
+  mutationObserver: MutationObserver;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, private afDB: AngularFireDatabase,private data: DataProvider) {
     this.ChatId= this.navParams.get('uid');
     this.name= this.navParams.get('nombre');
     this.afDB.list("/usuarios/"+firebase.auth().currentUser.uid+"/mensajes/"+this.ChatId).set("viewed",'viewed');
     this.getChat();
+  }
+
+
+  scrollToBottom() {
+    setTimeout(()=>{
+      if (this.content.scrollToBottom) {
+        this.content.scrollToBottom();
+      }
+    }, 1000);
   }
 
   /**
@@ -39,6 +52,7 @@ export class ChatPage {
       this.afDB.list("/usuarios/"+this.ChatId +"/mensajes/"+current.uid).push({type: 'outcoming', message: this.mensaje});
       this.afDB.list("/usuarios/"+this.ChatId+"/mensajes/"+current.uid).set("viewed","not-viewed");
       this.mensaje='';
+      this.scrollToBottom();
     }
   }
 
@@ -56,6 +70,7 @@ export class ChatPage {
           this.message.push({menssaje: data[key]['message'], type: data[key]['type']} );
         }
       }
+      this.scrollToBottom();
     })
   }
 }

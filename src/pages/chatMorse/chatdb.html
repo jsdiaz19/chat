@@ -6,17 +6,20 @@
             <ion-icon name="arrow-back"></ion-icon>
         </button>
     </ion-buttons>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="changeSound()" ><ion-icon [name]="visible ? 'md-volume-up' :'md-volume-off'"></ion-icon></button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
-<ion-content (click)="get($event)">
+<ion-content #content (click)="get($event)">
 
-  <ion-list>
+  <ion-list id="list">
     <ion-item no-lines>
-      <div class="message" *ngFor="let mensaje of mensajes" [ngClass]="mensaje.type" [ngStyle]="{ background: mensaje.isSelect ? '#e1dddc': 'white'}">
-        <p>{{mensaje.menssaje}}</p>
+      <div *ngFor="let mensaje of mensajes" class="message" [ngClass]="mensaje.type" [ngStyle]="{ background: mensaje.isSelect ? '#e1dddc': 'white'}">
+        <p>{{mensaje.menssaje}}</p> 
       </div>
-      
     </ion-item>
   </ion-list>
 </ion-content>
@@ -31,10 +34,10 @@
 
     <ion-grid>
       <ion-row >
-        <ion-col col-6 class="inputMorseLeft" (click)="dot()"> 
+        <ion-col col-6 class="inputMorseLeft" (click)="dot()" [style.backgroundColor]="background[0]" (touchstart)="changeBackground(0,true)" (touchend)="changeBackground(0,false)"> 
           <ion-icon name="square"></ion-icon>
         </ion-col>
-        <ion-col col-6 class="inputMorseRight" (click)="dash()">
+        <ion-col col-6 class="inputMorseRight" (click)="dash()" [style.backgroundColor]="background[1]" (touchstart)="changeBackground(1,true)" (touchend)="changeBackground(1,false)">
           <ion-icon name="remove"></ion-icon>
         </ion-col>
       </ion-row>
@@ -42,18 +45,18 @@
       
       <ion-row   > 
 
-        <ion-col col-6 class="inputMorseSpace" (touchstart)="keydownSpaceLetter()" (touchend)="keyupSpaceWord()">
+        <ion-col col-6 class="inputMorseSpace" [style.backgroundColor]="background[2]" (touchstart)="keydownSpaceLetter()" (touchend)="keyupSpaceWord()">
           <ion-icon name="barcode"></ion-icon>
         </ion-col>
       
-        <ion-col col-6 class="inputMorseSpace" (click)="ClearString()"> 
+        <ion-col col-6 class="inputMorseSpace" (click)="ClearString()" [style.backgroundColor]="background[3]" (touchstart)="changeBackground(3,true)" (touchend)="changeBackground(3,false)"> 
           <ion-icon name="backspace"></ion-icon>
         </ion-col>
 
       </ion-row>
       
 
-      <ion-row  class="sendMorse" (click)="Morse()">   
+      <ion-row  class="sendMorse" (click)="Morse()" [style.backgroundColor]="background[4]" (touchstart)="changeBackground(4,true)" (touchend)="changeBackground(4,false)">   
         <ion-icon name="paper-plane" class="sendMorseIcon"> </ion-icon>
       </ion-row>
 

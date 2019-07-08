@@ -6,14 +6,23 @@
 </ion-header>
 
 
-<ion-content class="main">
-  <div class="chat-box">
+<ion-content class="main" #content>
+
+  <ion-list>
+    <ion-item class="message-area" no-lines>
+      <div class="message" *ngFor="let mensaje of message" [ngClass]="mensaje.type" >
+        <p>{{mensaje.menssaje}}</p>
+      </div>        
+    </ion-item>
+  </ion-list>
+
+  <!-- <div class="chat-box">
     <div class="message-area">
       <div class="message" *ngFor="let mensaje of message" [ngClass]="mensaje.type">
         <p>{{mensaje.menssaje}}</p>
       </div>
     </div>
-  </div>
+  </div> -->
 </ion-content>
 
 <ion-footer class="footer1">

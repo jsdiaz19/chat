@@ -1,14 +1,10 @@
 page-home {
     
-    ion-header{
-        background: map-get($colors, primary);
-    }
+  ion-header{
+    background: map-get($colors, primary);
+  }
     
   ion-content {
-    //background: url(../assets/imgs/chat-back.png) no-repeat center center fixed;
-    background-size: cover;
-    height: 100%;
-    overflow: hidden;
     .item-md, .item-ios {
       background: none;
     }
@@ -157,12 +153,12 @@ page-home {
 
   }
 
-  .message.incoming {
+  .incoming {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-
+    overflow: hidden;
     p {
       color: black;
       border-radius: 0 11px 11px 11px;
@@ -170,12 +166,12 @@ page-home {
     }
   }
 
-  .message.outcoming {
+  .outcoming {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
-
+    overflow: hidden;
     p {
       color: white;
       background: #4169E1;

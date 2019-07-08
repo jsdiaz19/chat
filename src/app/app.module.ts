@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { TextToSpeech } from '@ionic-native/text-to-speech';
 
 import {ChatMorsePage} from '../pages/chatMorse/chatdb';
 import { LoginPage } from '../pages/login/login';
@@ -85,6 +86,7 @@ export const firebaseConfig = {
   providers: [
     StatusBar,
     SplashScreen,
+    TextToSpeech,
     Vibration,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RegisterProvider,

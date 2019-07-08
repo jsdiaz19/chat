@@ -11,6 +11,8 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { ChatMorsePage} from '../chatMorse/chatdb';
 import {VibrationProvider} from '../../providers/vibration/vibration';
 import {MorseProvider} from '../../providers/morse/morse'
+import { TextToSpeech } from '@ionic-native/text-to-speech';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -21,7 +23,16 @@ export class HomePage {
   message = [];
   search: string ='';
   user: any;
-  constructor(public navCtrl: NavController, private auth: DataProvider,public events: Events,private zone: NgZone,private afDB: AngularFireDatabase,private vibration: VibrationProvider, private traslate: MorseProvider) {
+  visible: boolean = true;
+  constructor(public navCtrl: NavController, 
+    private auth: DataProvider,
+    public events: Events,
+    private zone: NgZone,
+    private afDB: AngularFireDatabase,
+    private vibration: VibrationProvider, 
+    private traslate: MorseProvider,
+    private tts: TextToSpeech) {
+  
     this.GetMessage();
     this.user= this.auth.CurrentUser();
     this.afDB.list("/usuarios/"+ firebase.auth().currentUser.uid+"/mensajes").valueChanges().subscribe( res=>{
@@ -39,6 +50,10 @@ export class HomePage {
 
   ngOnChanges(){
     this.GetMessage();
+  }
+
+  changeSound(){
+    this.visible=!this.visible;
   }
 
 /**
@@ -135,15 +150,30 @@ export class HomePage {
       this.numChat+=1;
       this.filter[this.numChat].isSelect=true;
       this.vibration.beginVibrate();
-      this.vibration.VibrateMessage(this.traslate.Traducir(this.filter[this.numChat].nombre)) ;
+      if(this.visible){
+        this.tts.speak({ text:this.filter[this.numChat].nombre, locale: "es-ES"}).then(()=>{
+          this.vibration.VibrateMessage(this.traslate.Traducir(this.filter[this.numChat].nombre));
+        })
+      }else{
+        this.vibration.VibrateMessage(this.traslate.Traducir(this.filter[this.numChat].nombre));
+      }
+      
     }
     else if( this.numChat<this.filter.length-1){
       this.vibration.stopVibrate();
       this.numChat+=1;
       this.filter[this.numChat].isSelect=true;
       this.filter[this.numChat-1].isSelect=false;
-      this.vibration.beginVibrate();
-      this.vibration.VibrateMessage(this.traslate.Traducir(this.filter[this.numChat].nombre));
+      this.tts.stop();
+      if(this.visible){
+        this.tts.speak({ text:this.filter[this.numChat].nombre, locale: "es-ES"}).then(()=>{
+          this.vibration.beginVibrate();
+          this.vibration.VibrateMessage(this.traslate.Traducir(this.filter[this.numChat].nombre));
+        })
+      }else{
+        this.vibration.beginVibrate();
+        this.vibration.VibrateMessage(this.traslate.Traducir(this.filter[this.numChat].nombre));
+      }
     }
   }
 
@@ -157,8 +187,16 @@ export class HomePage {
       this.numChat-=1;
       this.filter[this.numChat].isSelect=true;
       this.filter[this.numChat+1].isSelect=false;
-      this.vibration.beginVibrate();
-      this.vibration.VibrateMessage(this.traslate.Traducir(this.filter[this.numChat].nombre));
+      this.tts.stop();
+      if(this.visible){
+        this.tts.speak({ text:this.filter[this.numChat].nombre, locale: "es-ES"}).then(()=>{
+          this.vibration.beginVibrate();
+          this.vibration.VibrateMessage(this.traslate.Traducir(this.filter[this.numChat].nombre));
+        })
+      }else{
+        this.vibration.beginVibrate();
+        this.vibration.VibrateMessage(this.traslate.Traducir(this.filter[this.numChat].nombre));
+      }
     }
   }
 
