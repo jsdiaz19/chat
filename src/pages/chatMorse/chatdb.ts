@@ -172,6 +172,18 @@ getChat(){
         }
       }
       this.scrollToBottom();
+      this.mensajes[this.currentMessage].isSelect=false;
+      this.currentMessage= this.mensajes.length-2;
+      this.mensajes[this.currentMessage].isSelect=true;
+      if( this.visible){
+        this.tts.speak({text: this.mensajes[this.currentMessage+1].menssaje, locale: "es-ES"}).then(()=>{
+          this.vibration.beginVibrate();
+          this.vibration.VibrateMessage(this.mensajes[this.currentMessage].menssaje);
+        })
+      }else{
+        this.vibration.beginVibrate();
+        this.vibration.VibrateMessage(this.mensajes[this.currentMessage].menssaje);
+      }
     })
   }
 
@@ -180,12 +192,25 @@ getChat(){
  */
 
   SendMessage(mensaje){
+    this.vibration.stopVibrate();
     var current= this.data.CurrentUser();
     this.afDB.list("/usuarios/"+current.uid +"/mensajes/"+this.ChatId).push({type: 'incoming', message: mensaje});
     this.afDB.list("/usuarios/"+this.ChatId +"/mensajes/"+current.uid).push({type: 'outcoming', message:mensaje});
     this.afDB.list("/usuarios/"+this.ChatId+"/mensajes/"+current.uid).set("viewed","not-viewed");
     this.scrollToBottom();
-    //if(this.content!=undefined){ this.content.scrollToBottom(0);}
+    this.mensajes[this.currentMessage].isSelect=false;
+    this.currentMessage= this.mensajes.length-2;
+    this.mensajes[this.currentMessage].isSelect=true;
+    if( this.visible){
+      this.tts.speak({text: this.mensajes[this.currentMessage+1].menssaje, locale: "es-ES"}).then(()=>{
+        this.vibration.beginVibrate();
+        this.vibration.VibrateMessage(this.mensajes[this.currentMessage].menssaje);
+      })
+    }else{
+      this.vibration.beginVibrate();
+      this.vibration.VibrateMessage(this.mensajes[this.currentMessage].menssaje);
+    }
+    
   }
 
   /**
@@ -246,14 +271,14 @@ getChat(){
     }
   }
 
-  // get(event){
-  //   if(event.screenX<=200){
-  //     this.UpMessage();
-  //   }
-  //   else{
-  //     this.DownMessage();
-  //   }
-  // }
+  get(event){
+    if(event.screenX<=200){
+      this.UpMessage();
+    }
+    else{
+      this.DownMessage();
+    }
+  }
 
   changeSound(){
     this.visible=!this.visible;
